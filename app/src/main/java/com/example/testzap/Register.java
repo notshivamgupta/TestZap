@@ -74,7 +74,7 @@ Intent intent,a;
                      if (task.isSuccessful())
                      {
                          Toast.makeText(Register.this, "User Created", Toast.LENGTH_SHORT).show();
-                         intent=new Intent(Register.this,MainActivity.class);
+                         intent=new Intent(Register.this,Sign_in.class);
                          startActivity(intent);
                      }
                      else
