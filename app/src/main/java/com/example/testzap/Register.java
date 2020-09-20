@@ -75,6 +75,7 @@ Intent intent,a;
                      {
                          Toast.makeText(Register.this, "User Created", Toast.LENGTH_SHORT).show();
                          intent=new Intent(Register.this,MainActivity.class);
+                         startActivity(intent);
                      }
                      else
                      {
