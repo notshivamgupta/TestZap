@@ -66,7 +66,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/input"
             android:drawableLeft="@drawable/ic_baseline_account_circle_24"
-            android:hint="    Enter your full name"
+            android:hint="@string/enter_your_full_name"
             android:inputType="text"
             android:textColorHint="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +89,7 @@
             android:layout_height="match_parent"
             android:id="@+id/rti2"
             android:inputType="text"
-            android:hint="    Enter your email"
+            android:hint="@string/enter_your_email"
             android:background="@drawable/input"
             android:textColorHint="#000000"
             android:drawableLeft="@drawable/ic_baseline_email_24"/>
@@ -114,7 +114,7 @@
             android:inputType="textPassword"
             android:layout_height="match_parent"
             android:background="@drawable/input"
-            android:hint="    Enter password"
+            android:hint="@string/enter_password"
             android:id="@+id/rti3"
             android:drawableStart="@drawable/ic_baseline_vpn_key_24"
             android:textColorHint="#000000"
@@ -142,7 +142,7 @@
             android:id="@+id/rti4"
             android:drawableStart="@drawable/ic_baseline_vpn_key_24"
             android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
-            android:hint="    Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:textColorHint="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -152,7 +152,7 @@
         android:layout_width="238dp"
         android:layout_height="60dp"
         android:background="#E76F51"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="#ffff"
         android:textSize="25dp"
         android:textStyle="bold"
