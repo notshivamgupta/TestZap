@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Test Zap</string>
+    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="enter_your_emailId">Enter Your Email</string>
+    <string name="enter_your_password">Enter Your Password</string>
 </resources>
