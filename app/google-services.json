@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "845356649630",
+    "firebase_url": "https://testzap-82ca7.firebaseio.com",
+    "project_id": "testzap-82ca7",
+    "storage_bucket": "testzap-82ca7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845356649630:android:b9d440e1eb2fc5fad5ff8f",
+        "android_client_info": {
+          "package_name": "com.example.testzap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845356649630-55ofi2mrkur2he7f1sosgrtunrkqm24h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWCJvKivDhIG67V3NM73reuEFQnJ-QtWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845356649630-55ofi2mrkur2he7f1sosgrtunrkqm24h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
