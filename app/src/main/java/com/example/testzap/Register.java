@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,26 +14,37 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.w3c.dom.Document;
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Register extends AppCompatActivity {
+    public static final String TAG = "Tag";
     private FirebaseAuth mAuth;
+    FirebaseFirestore db;
 private ImageView ri1,ri2;
 private TextInputEditText Rt1,Rt2,Rt3,Rt4;
 private TextView Rtt1,Rtt2;
 private Button Rb1,Rb2;
+String userId;
 Intent intent,a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         ri1 =findViewById(R.id.rimg1);
         ri2 =findViewById(R.id.rimg2);
         Rt1=findViewById(R.id.rti1);
@@ -51,8 +63,9 @@ Intent intent,a;
        Rb1.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-             String Email=Rt2.getText().toString().trim();
+             final String Email=Rt2.getText().toString().trim();
              String Pass=Rt3.getText().toString().trim();
+             final String Name=Rt1.getText().toString();
              if(TextUtils.isEmpty(Email)) {
 
                  Rt2.setError("Email is Required");
@@ -74,8 +87,20 @@ Intent intent,a;
                      if (task.isSuccessful())
                      {
                          Toast.makeText(Register.this, "User Created", Toast.LENGTH_SHORT).show();
+                          userId= mAuth.getCurrentUser().getUid();
+                         DocumentReference documentReference=db.collection("Users").document(userId);
+                         Map<String,Object>user=new HashMap<>();
+                         user.put("Full_Name",Name);
+                         user.put("Email_Id",Email);
+                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                             @Override
+                             public void onSuccess(Void aVoid) {
+                                 Log.d(TAG,"On Sucess: User Profile Created for"+userId);
+                             }
+                         });
                          intent=new Intent(Register.this,Sign_in.class);
                          startActivity(intent);
+
                      }
                      else
                      {
