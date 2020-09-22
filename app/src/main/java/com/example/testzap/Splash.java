@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import java.util.concurrent.RunnableFuture;
 
 public class Splash extends AppCompatActivity {
     Animation a1,a2;
@@ -25,12 +28,13 @@ public class Splash extends AppCompatActivity {
 
         s.setAnimation(a1);
         b.setAnimation(a2);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        Intent intent=new Intent(Splash.this,Get_started.class);
-        startActivity(intent);
+
+         new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent=new Intent(Splash.this,Get_started.class);
+                startActivity(intent);
+            }
+        },5000);
     }
 }
