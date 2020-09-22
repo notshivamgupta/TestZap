@@ -25,6 +25,11 @@ public class Splash extends AppCompatActivity {
 
         s.setAnimation(a1);
         b.setAnimation(a2);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         Intent intent=new Intent(Splash.this,Get_started.class);
         startActivity(intent);
     }

@@ -95,7 +95,7 @@ Intent intent,a;
                          documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                              @Override
                              public void onSuccess(Void aVoid) {
-                                 Log.d(TAG,"On Sucess: User Profile Created for"+userId);
+                                 Log.d(TAG,"On Success: User Profile Created for"+userId);
                              }
                          });
                          intent=new Intent(Register.this,Sign_in.class);
@@ -115,7 +115,8 @@ Intent intent,a;
            @Override
            public void onClick(View view) {
                a=new Intent(Register.this,Sign_in.class);
-               startActivity(a);
+
+
            }
        });
     }
