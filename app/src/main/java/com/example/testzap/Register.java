@@ -115,8 +115,7 @@ Intent intent,a;
            @Override
            public void onClick(View view) {
                a=new Intent(Register.this,Sign_in.class);
-
-
+               startActivity(a);
            }
        });
     }
