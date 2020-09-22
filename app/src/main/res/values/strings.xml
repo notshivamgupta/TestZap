@@ -7,4 +7,8 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="enter_your_emailId">Enter Your Email</string>
     <string name="enter_your_password">Enter Your Password</string>
+    <string name="title_activity_home_page">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

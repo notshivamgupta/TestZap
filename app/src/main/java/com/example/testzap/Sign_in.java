@@ -61,7 +61,7 @@ private ImageView si1,si2;
                         if (task.isSuccessful())
                         {
                             Toast.makeText(Sign_in.this, "Login Sucessful!", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(Sign_in.this,profile.class);
+                            Intent intent=new Intent(Sign_in.this,Home_page.class);
                             startActivity(intent);
                         }
                         Toast.makeText(Sign_in.this, "Login Failed!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
