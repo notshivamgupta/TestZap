@@ -11,26 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Hone_Activity"></activity>
-        <activity android:name=".Splash">
-        </activity>
-        <activity android:name=".Get_started" />
-        <activity android:name=".Register" />
-        <activity android:name=".Sign_in" />
-        <activity
-            android:name=".Home_page"
-            android:label="@string/title_activity_home_page"
-            >
+        <activity android:name=".Hone_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Splash">
+        </activity>
+        <activity android:name=".Get_started" />
+        <activity android:name=".Register" />
+        <activity android:name=".Sign_in" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>
