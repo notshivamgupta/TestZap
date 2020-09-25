@@ -44,13 +44,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout layout;
         private ImageView iView;
-        private TextView tView;
+       private TextView tView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             layout=itemView.findViewById(R.id.reslr);
             iView=itemView.findViewById(R.id.recycle);
-            tView=itemView.findViewById(R.id.recycletytle);
+           tView=itemView.findViewById(R.id.recycletytle);
         }
     }
 }

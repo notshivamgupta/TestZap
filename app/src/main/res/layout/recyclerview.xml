@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="3dp"
+    android:elevation="5dp"
+    android:layout_margin="10dp"
     app:cardCornerRadius="12dp"
     android:background="@color/colorAccent">
 
@@ -12,23 +13,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@drawable/card_bg"
         android:id="@+id/reslr"
-        android:layout_margin="5dp">
+       >
 
         <ImageView
             android:id="@+id/recycle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/ic_launcher_foreground" />
 
         <TextView
             android:id="@+id/recycletytle"
-            android:layout_width="wrap_content"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="DUMMY DATA"
-            android:textColor="@color/colorPrimary"
-            android:layout_margin="10dp"/>
+            android:textColor="#ffff"
+            android:textSize="15dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

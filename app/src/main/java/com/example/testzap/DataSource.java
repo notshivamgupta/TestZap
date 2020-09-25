@@ -20,5 +20,10 @@ public class DataSource {
         list.add(model);
         model = new DataModel(R.drawable.a6, "exam");
         list.add(model);
+        model = new DataModel(R.drawable.a5, "exam");
+        list.add(model);
+        model = new DataModel(R.drawable.a6, "exam");
+        list.add(model);
+
     }
 }
