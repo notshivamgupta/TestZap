@@ -9,8 +9,10 @@
 
     <style name="Home_ActivityTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="android:labelTextSize">30dp</item>
+        <item name="labelStyle">@font/poppins_bold</item>
+        <item name="colorAccent">#FFFFFF</item>
     </style>
 </resources>

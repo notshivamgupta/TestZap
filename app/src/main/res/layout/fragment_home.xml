@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home"
+    android:background="@drawable/homebar"
     tools:context=".HomeFragment">
 
     <LinearLayout
@@ -16,7 +16,6 @@
             android:id="@+id/namehome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:fontFamily="@font/poppins_medium"
             android:paddingLeft="25dp"
             android:textColor="#ffffff"

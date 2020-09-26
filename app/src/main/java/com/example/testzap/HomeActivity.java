@@ -1,9 +1,14 @@
 package com.example.testzap;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
@@ -16,6 +21,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
         BubbleNavigationLinearView bubbleNavigation = findViewById(R.id.bubbleNavigation);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -40,5 +47,22 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.Logout:
+                Intent intent=new Intent(HomeActivity.this,Get_started.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
