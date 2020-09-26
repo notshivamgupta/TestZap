@@ -3,26 +3,35 @@ package com.example.testzap;
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.User;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executor;
 
 
@@ -35,14 +44,28 @@ public class HomeFragment extends Fragment {
     FirebaseFirestore fStore;
     CustomAdapter adapter;
     TextView tv,t1;
-
-    String user;
+    String user=null;
     public HomeFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+        View view=inflater.inflate(R.layout.fragment_home, container, false);
+        fAuth=FirebaseAuth.getInstance();
+        t1= view.findViewById(R.id.namehome);
+        /*fStore=FirebaseFirestore.getInstance();
+        String userId=fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference= fStore.collection("Users").document(userId);
+       documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+           @Override
+           public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                      user=value.getString("Full_Name");
+               Toast.makeText(getActivity(), ""+user, Toast.LENGTH_SHORT).show();
+           }
+       });*/
 
         String s= "";
         Date today = new Date();
@@ -61,11 +84,8 @@ public class HomeFragment extends Fragment {
         else
             s="Good Morning, "+user;
 
-        View view=inflater.inflate(R.layout.fragment_home, container, false);
-
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
-        t1= view.findViewById(R.id.namehome);
         t1.setText(s);
         manager=new GridLayoutManager(view.getContext(),2);
         rView.setLayoutManager(manager);
