@@ -65,12 +65,7 @@ public class HomeFragment extends Fragment {
 
         t1= view.findViewById(R.id.namehome);
 
-
-
-
         fAuth= FirebaseAuth.getInstance();
-
-
         fStore=FirebaseFirestore.getInstance();
 
         userId = fAuth.getCurrentUser() .getUid();
@@ -79,26 +74,28 @@ public class HomeFragment extends Fragment {
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                t1.setText(value.getString("Full_Name"));
+
+               user= value.getString("Full_Name");
+
+                String s;
+                Date today = new Date();
+                SimpleDateFormat format = new SimpleDateFormat("HH");
+                String time = format.format(today);
+
+                int date= Integer.parseInt(time);
+                if(date>=4&&date<12)
+                    s="Good Morning, "+user;
+                else if(date>=12&&date<17)
+                    s="Good Afternoon, "+user;
+                else if(date>=17&&date<23)
+                    s="Good Evening, "+user;
+                else
+                    s="Good Morning, "+user;
+                t1.setText(s);
             }
         });
 
-   /*     String s= "";
-        Date today = new Date();
 
-        SimpleDateFormat format = new SimpleDateFormat("HH");
-
-        String time = format.format(today);
-
-        int date= Integer.parseInt(time);
-        if(date>=4&&date<12)
-            s="Good Morning, "+user;
-        else if(date>=12&&date<17)
-            s="Good Afternoon, "+user;
-        else if(date>=17&&date<23)
-            s="Good Evening, "+user;
-        else
-            s="Good Morning, "+user;*/
 
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
@@ -131,9 +128,6 @@ public class HomeFragment extends Fragment {
                alertBuilder.show();
            }
        });
-
-
-     //  t1.setText(s);
         manager=new GridLayoutManager(view.getContext(),2);
         rView.setLayoutManager(manager);
         dataSource=new DataSource();

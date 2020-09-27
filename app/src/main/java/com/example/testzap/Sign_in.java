@@ -67,7 +67,7 @@ private ImageView si1,si2;
                            storage.setData("USER",Email);
                             storage.setData("PASS",Pass);
                             Toast.makeText(Sign_in.this, "Login Sucessful!", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(Sign_in.this, MainActivity.class);
+                            Intent intent=new Intent(Sign_in.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
                         }
