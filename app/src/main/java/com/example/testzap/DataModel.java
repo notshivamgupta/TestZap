@@ -4,6 +4,7 @@ public class DataModel {
     private int img;
     private String title;
 
+
     public DataModel() {
     }
 

@@ -1,15 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="#F6F6F6"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:background="@drawable/profile_bg"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:background="#F0DDB1"
+            android:src="@drawable/backbtn_black"
+            app:layout_constraintBottom_toTopOf="@+id/profile_image"
+            app:layout_constraintEnd_toStartOf="@+id/profile_name"
+            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.645" />
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/back"
+            android:fontFamily="@font/poppins_bold"
+            android:text="My Profile"
+            android:textColor="#000000"
+            android:textSize="26dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.072" />
+
+
+        <ImageButton
+            android:id="@+id/dot3"
+            android:layout_width="32dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="28dp"
+            android:background="#F0DDB1"
+            android:src="@drawable/dotmenu_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.78"
+            app:layout_constraintStart_toEndOf="@+id/profile_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/back"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="My Profile"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/back"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Status:"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/status_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.134"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="321dp"
+            android:layout_height="62dp"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/back"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.  "
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.952" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_below="@+id/profile_name"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_launcher_background"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/constraintLayout">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="My Profile"
+            android:textSize="26dp"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="185dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/task_bg"
+            android:elevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/icon_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/icon_check" />
+
+            <TextView
+                android:layout_width="129dp"
+                android:layout_height="58dp"
+                android:layout_toRightOf="@+id/icon_check"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Test
+                Completed"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_check"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/icon_check"
+                android:fontFamily="@font/poppins_bold"
+                android:text="10"
+                android:textColor="#2E2E2E"
+                android:textSize="32dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="185dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/task_bg"
+            android:elevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/icon_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/icon_duration" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_duration"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Time
+                Duration"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_duration"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/icon_duration"
+                android:fontFamily="@font/poppins_bold"
+                android:text="10"
+                android:textColor="#2E2E2E"
+                android:textSize="32dp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="406dp"
+            android:layout_height="144dp"
+            android:src="@drawable/multi_dots"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
