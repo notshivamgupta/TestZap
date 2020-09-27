@@ -22,6 +22,7 @@ public class Sign_in extends AppCompatActivity {
 private TextInputEditText st1,st2;
 private Button b;
 private TextView t;
+CentralStorage storage;
     private FirebaseAuth mAuth;
 private ImageView si1,si2;
     @Override
@@ -31,6 +32,7 @@ private ImageView si1,si2;
         si1=findViewById(R.id.si1);
         mAuth = FirebaseAuth.getInstance();
         si2=findViewById(R.id.si2);
+        storage= new CentralStorage(Sign_in.this);
         st1=findViewById(R.id.sti1);
         st2=findViewById(R.id.sti2);
         t=findViewById(R.id.st1);
@@ -38,8 +40,8 @@ private ImageView si1,si2;
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String Email=st1.getText().toString().trim();
-                String Pass=st2.getText().toString().trim();
+                final String Email=st1.getText().toString().trim();
+                final String Pass=st2.getText().toString().trim();
                 if(TextUtils.isEmpty(Email)) {
 
                     st1.setError("Email is Required");
@@ -60,6 +62,8 @@ private ImageView si1,si2;
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful())
                         {
+                            storage.setData("USER",Email);
+                            storage.setData("PASS",Pass);
                             Toast.makeText(Sign_in.this, "Login Sucessful!", Toast.LENGTH_SHORT).show();
                             Intent intent=new Intent(Sign_in.this,HomeActivity.class);
                             startActivity(intent);

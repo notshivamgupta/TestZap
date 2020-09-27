@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homebar"
+    android:background="@drawable/home"
     tools:context=".HomeFragment">
 
     <LinearLayout
         android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <Button
+            android:id="@+id/logoutbutton"
+            android:layout_width="42dp"
+            android:layout_height="37dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_baseline_power_settings_new_24"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/namehome"
@@ -26,9 +38,9 @@
             android:id="@+id/texthome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="25dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/poppins_bold"
+            android:paddingLeft="25dp"
             android:text="Select a Subject :"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -41,5 +53,6 @@
             android:paddingRight="10dp" />
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

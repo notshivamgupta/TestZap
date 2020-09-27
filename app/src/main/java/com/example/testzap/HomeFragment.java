@@ -1,6 +1,10 @@
 package com.example.testzap;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,12 +17,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -34,17 +41,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
-
 public class HomeFragment extends Fragment {
     private RecyclerView rView;
     private GridLayoutManager manager;
     private List<DataModel> modelList;
     DataSource dataSource;
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
     CustomAdapter adapter;
     TextView tv,t1;
-    String user=null;
+    FirebaseAuth fAuth;
+    Button Logout;
+    String user="Suman Biswas";
     public HomeFragment() {
     }
 
@@ -54,18 +60,7 @@ public class HomeFragment extends Fragment {
 
 
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-        fAuth=FirebaseAuth.getInstance();
         t1= view.findViewById(R.id.namehome);
-        /*fStore=FirebaseFirestore.getInstance();
-        String userId=fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference= fStore.collection("Users").document(userId);
-       documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
-           @Override
-           public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                      user=value.getString("Full_Name");
-               Toast.makeText(getActivity(), ""+user, Toast.LENGTH_SHORT).show();
-           }
-       });*/
 
         String s= "";
         Date today = new Date();
@@ -86,6 +81,37 @@ public class HomeFragment extends Fragment {
 
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
+        Logout=view.findViewById(R.id.logoutbutton);
+
+        fAuth=FirebaseAuth.getInstance();
+        Logout.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               AlertDialog.Builder alertBuilder=new AlertDialog.Builder(getActivity());
+               alertBuilder.create();
+               alertBuilder.setMessage("Are You Sure You Want To Exit?");
+               alertBuilder.setCancelable(false);
+               alertBuilder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+                       new CentralStorage(getContext()).clearData();
+                       startActivity(new Intent(getContext(),Register.class));
+                       fAuth.signOut();
+                       getActivity().finish();
+                   }
+               });
+               alertBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+                       Toast.makeText(getActivity(), "The Operation Cancelled", Toast.LENGTH_SHORT).show();
+                       dialogInterface.dismiss();
+                   }
+               });
+               alertBuilder.show();
+           }
+       });
+
+
         t1.setText(s);
         manager=new GridLayoutManager(view.getContext(),2);
         rView.setLayoutManager(manager);

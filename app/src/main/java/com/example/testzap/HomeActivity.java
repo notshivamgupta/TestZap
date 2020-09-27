@@ -3,6 +3,8 @@ package com.example.testzap;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +12,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 public class HomeActivity extends AppCompatActivity {
 
     Fragment selectedFragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         bubbleNavigation.setNavigationChangeListener(new BubbleNavigationChangeListener() {
             @Override
             public void onNavigationChanged(View view, int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         selectedFragment = new HomeFragment();
                         break;
@@ -47,22 +55,5 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.Logout:
-                Intent intent=new Intent(HomeActivity.this,Get_started.class);
-                startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

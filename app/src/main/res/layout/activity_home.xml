@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#B69F9F"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
@@ -26,7 +27,7 @@
             android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bt_colorActive="@color/colorPrimary"
+            app:bt_colorActive="#CA7257"
             app:bt_colorInactive="#000000"
             app:bt_icon="@drawable/ic_home"
             app:bt_title="Home"
@@ -36,7 +37,7 @@
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bt_colorActive="@color/colorPrimary"
+            app:bt_colorActive="#9B71D6"
             app:bt_colorInactive="#000000"
             app:bt_icon="@drawable/ic_history"
             app:bt_title="History"
@@ -47,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:bt_colorActive="@color/colorPrimary"
+            app:bt_colorActive="#46B64A"
             app:bt_colorInactive="#000000"
             app:bt_icon="@drawable/ic_profile"
             app:bt_title="Profile" />

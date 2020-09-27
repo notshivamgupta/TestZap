@@ -36,6 +36,7 @@ public class Register extends AppCompatActivity {
 private ImageView ri1,ri2;
 private TextInputEditText Rt1,Rt2,Rt3,Rt4;
 private TextView Rtt1,Rtt2;
+CentralStorage storage;
 private Button Rb1,Rb2;
 String userId;
 Intent intent,a;
@@ -55,6 +56,7 @@ Intent intent,a;
         Rtt2=findViewById(R.id.rt2);
         Rb1=findViewById(R.id.rb1);
         Rb2=findViewById(R.id.rb2);
+        storage= new CentralStorage(Register.this);
         if (mAuth.getCurrentUser()!=null) {
 
             startActivity(new Intent(getApplicationContext(), Register.class));
@@ -64,7 +66,7 @@ Intent intent,a;
            @Override
            public void onClick(View view) {
              final String Email=Rt2.getText().toString().trim();
-             String Pass=Rt3.getText().toString().trim();
+             final String Pass=Rt3.getText().toString().trim();
              final String Name=Rt1.getText().toString();
              if(TextUtils.isEmpty(Email)) {
 
@@ -98,7 +100,9 @@ Intent intent,a;
                                  Log.d(TAG,"On Success: User Profile Created for"+userId);
                              }
                          });
-                         intent=new Intent(Register.this,Sign_in.class);
+                         storage.setData("USER",Email);
+                         storage.setData("PASS",Pass);
+                          intent=new Intent(Register.this,HomeActivity.class);
                          startActivity(intent);
 
                      }

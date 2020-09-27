@@ -180,8 +180,8 @@
 
     <Button
         android:id="@+id/rb2"
-        android:layout_width="83dp"
-        android:layout_height="31dp"
+        android:layout_width="80dp"
+        android:layout_height="29dp"
         android:background="#F6F6F6"
         android:gravity="left"
         android:text="sign in"

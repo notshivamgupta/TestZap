@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum dictum tempus, interdum at dignissim metus. Ultricies sed nunc."
+        android:text="Let's making exam preparations more fun along with mcq papers which will help you to increase your scoring ability and pass with flying colours"
         android:textColor="#000000"
         android:textSize="20dp"
         android:textStyle="bold"
