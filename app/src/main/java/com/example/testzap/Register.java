@@ -78,7 +78,7 @@ Intent intent,a;
                  Rt3.setError("Password is Required");
                  return;
              }
-             if (Pass.length()<=8)
+             if (Pass.length()<7)
              {
                  Rt3.setError("Password must contain atleast 8 characters");
                  return;
@@ -100,8 +100,8 @@ Intent intent,a;
                                  Log.d(TAG,"On Success: User Profile Created for"+userId);
                              }
                          });
-                         storage.setData("USER",Email);
-                         storage.setData("PASS",Pass);
+                       storage.setData("USER",Email);
+                       storage.setData("PASS",Pass);
                           intent=new Intent(Register.this,HomeActivity.class);
                          startActivity(intent);
 

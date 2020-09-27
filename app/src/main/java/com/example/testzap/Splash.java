@@ -31,22 +31,21 @@ public class Splash extends AppCompatActivity {
         s.setAnimation(a1);
         b.setAnimation(a2);
         value=storage.getData("USER");
-        new Handler().postDelayed(
-                new Runnable() {
-                    @Override
+       new Handler().postDelayed(
+               new Runnable() {
+                   @Override
                     public void run() {
                         if (value.isEmpty())
-                        {
+                       {
                             startActivity(new Intent(Splash.this,Get_started.class));
                         }
                         else
-                        {
+                       {
                             startActivity(new Intent(Splash.this,HomeActivity.class));
-                        }
-                        Splash.this.finish();
-                    }
+                       }
+                       Splash.this.finish(); }
                 },
                 3000
-        );
+       );
     }
 }

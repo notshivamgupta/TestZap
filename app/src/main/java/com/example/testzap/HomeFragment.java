@@ -49,8 +49,10 @@ public class HomeFragment extends Fragment {
     CustomAdapter adapter;
     TextView tv,t1;
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userId;
     Button Logout;
-    String user="Suman Biswas";
+    String user;
     public HomeFragment() {
     }
 
@@ -60,9 +62,28 @@ public class HomeFragment extends Fragment {
 
 
         View view=inflater.inflate(R.layout.fragment_home, container, false);
+
         t1= view.findViewById(R.id.namehome);
 
-        String s= "";
+
+
+
+        fAuth= FirebaseAuth.getInstance();
+
+
+        fStore=FirebaseFirestore.getInstance();
+
+        userId = fAuth.getCurrentUser() .getUid();
+
+        DocumentReference documentReference= fStore.collection("Users").document(userId);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                t1.setText(value.getString("Full_Name"));
+            }
+        });
+
+   /*     String s= "";
         Date today = new Date();
 
         SimpleDateFormat format = new SimpleDateFormat("HH");
@@ -77,7 +98,7 @@ public class HomeFragment extends Fragment {
         else if(date>=17&&date<23)
             s="Good Evening, "+user;
         else
-            s="Good Morning, "+user;
+            s="Good Morning, "+user;*/
 
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
@@ -94,9 +115,9 @@ public class HomeFragment extends Fragment {
                alertBuilder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialogInterface, int i) {
-                       new CentralStorage(getContext()).clearData();
-                       startActivity(new Intent(getContext(),Register.class));
-                       fAuth.signOut();
+                       new CentralStorage(getActivity()).clearData();
+                       FirebaseAuth.getInstance().signOut();
+                       startActivity(new Intent(getActivity(),Register.class));
                        getActivity().finish();
                    }
                });
@@ -112,7 +133,7 @@ public class HomeFragment extends Fragment {
        });
 
 
-        t1.setText(s);
+     //  t1.setText(s);
         manager=new GridLayoutManager(view.getContext(),2);
         rView.setLayoutManager(manager);
         dataSource=new DataSource();
