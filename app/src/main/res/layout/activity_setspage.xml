@@ -3,7 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#F6F6F6"
     android:layout_height="match_parent"
     tools:context=".Setspage">
+
+    <LinearLayout
+        android:id="@+id/setslnr"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="@drawable/linearsets"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/setsimg"
+            android:layout_width="395dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/setstxt"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:text="DUMMY DATA"
+            android:textColor="#ffff"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

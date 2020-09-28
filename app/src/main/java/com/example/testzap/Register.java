@@ -104,7 +104,7 @@ Intent intent,a;
                        storage.setData("PASS",Pass);
                           intent=new Intent(Register.this,HomeActivity.class);
                          startActivity(intent);
-
+                          finish();
                      }
                      else
                      {

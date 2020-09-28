@@ -52,7 +52,6 @@ public class HomeFragment extends Fragment {
     FirebaseFirestore fStore;
     String userId;
     Button Logout;
-    String user;
     public HomeFragment() {
     }
 
@@ -65,7 +64,12 @@ public class HomeFragment extends Fragment {
 
         t1= view.findViewById(R.id.namehome);
 
+
+
+
         fAuth= FirebaseAuth.getInstance();
+
+
         fStore=FirebaseFirestore.getInstance();
 
         userId = fAuth.getCurrentUser() .getUid();
@@ -74,12 +78,12 @@ public class HomeFragment extends Fragment {
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-               user= value.getString("Full_Name");
-
+               String user=value.getString("Full_Name");
                 String s;
                 Date today = new Date();
+
                 SimpleDateFormat format = new SimpleDateFormat("HH");
+
                 String time = format.format(today);
 
                 int date= Integer.parseInt(time);
@@ -94,8 +98,6 @@ public class HomeFragment extends Fragment {
                 t1.setText(s);
             }
         });
-
-
 
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
@@ -128,6 +130,9 @@ public class HomeFragment extends Fragment {
                alertBuilder.show();
            }
        });
+
+
+     //  t1.setText(s);
         manager=new GridLayoutManager(view.getContext(),2);
         rView.setLayoutManager(manager);
         dataSource=new DataSource();
