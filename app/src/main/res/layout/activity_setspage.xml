@@ -3,57 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="#F6F6F6"
+    android:layout_height="match_parent"
     tools:context=".Setspage">
 
     <LinearLayout
         android:id="@+id/setslnr"
-        android:layout_width="421dp"
-        android:layout_height="338dp"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
         android:background="@drawable/linearsets"
         android:elevation="10dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/im1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/backbtn_black" />
-
-            <TextView
-                android:id="@+id/setstxt"
-                android:layout_width="352dp"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:padding="10dp"
-                android:text="DUMMY DATA"
-                android:textColor="#ffff"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/setsimg"
             android:layout_width="395dp"
             android:layout_height="170dp"
-
-            android:layout_gravity="center"
+            android:layout_margin="10dp"
             android:src="@drawable/ic_launcher_foreground" />
 
+        <TextView
+            android:id="@+id/setstxt"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:text="DUMMY DATA"
+            android:textColor="#ffff"
+            android:textSize="18dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
