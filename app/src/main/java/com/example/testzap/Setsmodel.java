@@ -1,21 +1,19 @@
 package com.example.testzap;
 
 public class Setsmodel {
-    String set;
+    String Name;
     Setsmodel()
     {
-
     }
 
     public Setsmodel(String set) {
-        this.set = set;
+        this.Name = set;
     }
 
     public String getSet() {
-        return set;
+        return Name;
     }
-
     public void setSet(String set) {
-        set = set;
+        this.Name = set;
     }
 }

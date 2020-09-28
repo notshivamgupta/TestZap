@@ -1,7 +1,9 @@
 package com.example.testzap;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +23,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.SnapshotParser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class Setspage extends AppCompatActivity {
     private ImageView setsimg;
@@ -29,7 +34,8 @@ public class Setspage extends AppCompatActivity {
     private LinearLayout setslyt;
     private ImageButton im1;
     RecyclerView recsetsview;
-SetsAdapter myadapter;
+    SetsAdapter myadapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,16 +44,16 @@ SetsAdapter myadapter;
         setstxt=findViewById(R.id.setstxt);
         setslyt=findViewById(R.id.setslnr);
         im1=findViewById(R.id.im1);
-        recsetsview= findViewById(R.id.setsRecycler);
+        recsetsview= (RecyclerView) findViewById(R.id.setsRecycler);
 
-        FirebaseRecyclerOptions<Setsmodel> options =
-                new FirebaseRecyclerOptions.Builder<Setsmodel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Subjects").child("Science & Nature").child("Sets"), Setsmodel.class)
-                        .build();
-        myadapter=new SetsAdapter(options);
-        recsetsview.setAdapter(myadapter);
+        recsetsview.setLayoutManager(new GridLayoutManager(Setspage.this,1));
 
-        recsetsview.setLayoutManager(new LinearLayoutManager(this));
+
+        /*Query query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("posts");*/
+
+
         Intent intent=getIntent();
         int c=intent.getIntExtra("Subject Colour",0);
         setstxt.setText(intent.getStringExtra("Subject Name"));
@@ -56,9 +62,21 @@ SetsAdapter myadapter;
 
         GradientDrawable drawable = (GradientDrawable) setslyt.getBackground();
         drawable.setColor(c);
+          im1.setBackgroundColor(c);
 
-      im1.setBackgroundColor(c);
+        FirebaseRecyclerOptions<Setsmodel> options =
+                new FirebaseRecyclerOptions.Builder<Setsmodel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Sets"), new SnapshotParser<Setsmodel>() {
+                            @NonNull
+                            @Override
+                            public Setsmodel parseSnapshot(@NonNull DataSnapshot snapshot) {
+                                return new Setsmodel(snapshot.child("Name").getValue().toString());
+                            }
+                        })
+                        .build();
 
+        myadapter=new SetsAdapter(options);
+        recsetsview.setAdapter(myadapter);
     }
 
    @Override
@@ -66,6 +84,7 @@ SetsAdapter myadapter;
         super.onStart();
         myadapter.startListening();
     }
+
     @Override
     protected void onStop() {
         super.onStop();

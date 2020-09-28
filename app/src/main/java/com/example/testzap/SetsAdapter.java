@@ -18,7 +18,7 @@ public class SetsAdapter extends FirebaseRecyclerAdapter<Setsmodel,SetsAdapter.S
 
     @Override
     protected void onBindViewHolder(@NonNull SetsViewHolder setsViewHolder, int i, @NonNull Setsmodel setsmodel) {
-        setsViewHolder.SetsTxt.setText(setsmodel.set);
+        setsViewHolder.setTxt(setsmodel.getSet());
     }
 
     @NonNull
@@ -33,8 +33,10 @@ public class SetsAdapter extends FirebaseRecyclerAdapter<Setsmodel,SetsAdapter.S
         TextView SetsTxt;
         public SetsViewHolder(@NonNull View itemView) {
             super(itemView);
-            SetsTxt=(TextView)itemView.findViewById(R.id.setstxt);
+            SetsTxt=itemView.findViewById(R.id.Settxt);
+        }
+        public void setTxt(String string) {
+            SetsTxt.setText(string);
         }
     }
-
 }
