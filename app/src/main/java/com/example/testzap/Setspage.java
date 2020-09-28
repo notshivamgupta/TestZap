@@ -42,7 +42,7 @@ SetsAdapter myadapter;
 
         FirebaseRecyclerOptions<Setsmodel> options =
                 new FirebaseRecyclerOptions.Builder<Setsmodel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("testzap-82ca7").child("Subjects").child("Science & Nature").child("Sets"), Setsmodel.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Subjects").child("Science & Nature").child("Sets"), Setsmodel.class)
                         .build();
         myadapter=new SetsAdapter(options);
         recsetsview.setAdapter(myadapter);

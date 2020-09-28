@@ -18,7 +18,7 @@ public class SetsAdapter extends FirebaseRecyclerAdapter<Setsmodel,SetsAdapter.S
 
     @Override
     protected void onBindViewHolder(@NonNull SetsViewHolder setsViewHolder, int i, @NonNull Setsmodel setsmodel) {
-        setsViewHolder.SetsTxt.setText(setsmodel.Set);
+        setsViewHolder.SetsTxt.setText(setsmodel.set);
     }
 
     @NonNull
