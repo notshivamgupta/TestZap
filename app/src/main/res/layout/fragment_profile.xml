@@ -192,6 +192,8 @@
             android:layout_width="185dp"
             android:layout_height="120dp"
             android:layout_marginTop="80dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/task_bg"
             android:elevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"

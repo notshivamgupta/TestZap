@@ -1,6 +1,7 @@
 package com.example.testzap;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
@@ -34,11 +34,23 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int a = Color.parseColor(list.get(position).getColour());
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        final int a = Color.parseColor(list.get(position).getColour());
   holder.tView.setText(list.get(position).getTitle());
   holder.iView.setImageResource(list.get(position).getImg());
   holder.layout.setBackgroundColor(a);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(context,Setspage.class);
+                intent.putExtra("Subject Name",list.get(position).getTitle());
+                intent.putExtra("Subject Image",list.get(position).getImg());
+                //intent.putExtra("Subject Colour",list.get(position).getColour());
+                intent.putExtra("Subject Colour",a);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
