@@ -77,6 +77,7 @@ public class Setspage extends AppCompatActivity {
 
         myadapter=new SetsAdapter(options);
         recsetsview.setAdapter(myadapter);
+
     }
 
    @Override
