@@ -22,6 +22,7 @@ private FirebaseDatabase fDbase;
 private DatabaseReference dref;
 private Button nextques;
 int total=1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
