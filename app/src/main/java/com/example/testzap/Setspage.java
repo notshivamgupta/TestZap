@@ -77,7 +77,12 @@ public class Setspage extends AppCompatActivity {
 
         myadapter=new SetsAdapter(options);
         recsetsview.setAdapter(myadapter);
-
+        im1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Setspage.this,ExamPage.class));
+            }
+        });
     }
 
    @Override

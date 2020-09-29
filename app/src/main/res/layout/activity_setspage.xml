@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F6F6"
-    tools:context=".Setspage">
+    tools:context=".Setspage"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/setslnr"
-        android:layout_width="421dp"
-        android:layout_height="338dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/linearsets"
         android:elevation="10dp"
         android:orientation="vertical"
@@ -23,10 +24,12 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:orientation="horizontal">
 
             <ImageButton
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
                 android:id="@+id/im1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,38 +37,35 @@
 
             <TextView
                 android:id="@+id/setstxt"
-                android:layout_width="352dp"
-                android:layout_height="45dp"
+                android:layout_width="332dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:padding="10dp"
                 android:text="DUMMY DATA"
                 android:textColor="#ffff"
-                android:textSize="18dp"
+                android:textSize="30dp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
 
         <ImageView
             android:id="@+id/setsimg"
-            android:layout_width="395dp"
-            android:layout_height="170dp"
-
+            android:layout_width="397dp"
+            android:layout_height="177dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_launcher_foreground" />
 
-    </LinearLayout>
 
+
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/setsRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="245dp" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

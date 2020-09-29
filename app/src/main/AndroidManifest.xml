@@ -11,19 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".start_test"></activity>
-        <activity android:name=".Setspage" />
+        <activity android:name=".Setspage"></activity>
+        <activity android:name=".ExamPage"></activity>
         <activity
             android:name=".HomeActivity"
             android:theme="@style/AppTheme">
 
-            <!--
-            <intent-filter>
+
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+            </intent-filter>-->
 
         </activity>
         <activity android:name=".Splash">
@@ -33,16 +32,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Get_started">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".Get_started" >
 
-            <!--
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+            </intent-filter>-->
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".Sign_in" />
