@@ -21,6 +21,7 @@ TextView question,ops1,ops2,ops3,ops4;
 private FirebaseDatabase fDbase;
 private DatabaseReference dref;
 private Button nextques;
+int total=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,68 +32,58 @@ private Button nextques;
         ops3=findViewById(R.id.option3);
         ops4=findViewById(R.id.option4);
         nextques=findViewById(R.id.buttonchangeques);
-          fDbase=FirebaseDatabase.getInstance();
-          for (int i=1;i<3;i++){
-              String a="Question";
-              a=a.concat(Integer.toString(i));
-              dref = fDbase.getReference().child("Questions").child(a);
-              dref.addValueEventListener(new ValueEventListener() {
-                  @Override
-                  public void onDataChange(@NonNull DataSnapshot snapshot) {
+        fDbase = FirebaseDatabase.getInstance();
 
-                      Questionmodel Question = snapshot.getValue(Questionmodel.class);
-                      question.setText(Question.getQuestion());
-                      ops1.setText(Question.getOption1());
-                      ops2.setText(Question.getOption2());
-                      ops3.setText(Question.getOption3());
-                      ops4.setText(Question.getOption4());
-                  }
+        if (total>5) {
+        }
+        else {
 
-                  @Override
-                  public void onCancelled(@NonNull DatabaseError error) {
+            dref = fDbase.getReference().child("Questions").child(Integer.toString(total));
+            dref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                  }
-              });
-          }
-            /*  nextques.setOnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View view) {
+                    Questionmodel Question = snapshot.getValue(Questionmodel.class);
+                    question.setText(Question.getQuestion());
+                    ops1.setText(Question.getOption0());
+                    ops2.setText(Question.getOption1());
+                    ops3.setText(Question.getOption2());
+                    ops4.setText(Question.getOption3());
+                }
 
-                      dref.addValueEventListener(new ValueEventListener() {
-                          @Override
-                          public void onDataChange(@NonNull DataSnapshot snapshot) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-                              Questionmodel Question=snapshot.getValue(Questionmodel.class);
-                              question.setText(Question.getQuestion());
-                              ops1.setText(Question.getOption1());
-                              ops2.setText(Question.getOption2());
-                              ops3.setText(Question.getOption3());
-                              ops4.setText(Question.getOption4());
-                          }
+                }
+            });
+             total++;
+            nextques.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dref = fDbase.getReference().child("Questions").child(Integer.toString(total));
+                    dref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                          @Override
-                          public void onCancelled(@NonNull DatabaseError error) {
+                            Questionmodel Question = snapshot.getValue(Questionmodel.class);
+                            question.setText(Question.getQuestion());
+                            ops1.setText(Question.getOption0());
+                            ops2.setText(Question.getOption1());
+                            ops3.setText(Question.getOption2());
+                            ops4.setText(Question.getOption3());
+                        }
 
-                          }
-                      });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                  }
-              });*/
+                        }
+                    });
+                    total++;
+
+                }
+            });
+        }
 
 
-        /*FirebaseRecyclerOptions<Questionmodel> options =
-                new FirebaseRecyclerOptions.Builder<Questionmodel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("subject_name").child("Scince & Nature").child("Sets").child("results").child("0"), new SnapshotParser<Questionmodel>() {
-                            @NonNull
-                            @Override
-                            public Questionmodel parseSnapshot(@NonNull DataSnapshot snapshot) {
-                                return new Questionmodel(snapshot.child("question").getValue().toString(),
-                                        snapshot.child("correct_answer").getValue().toString(),
-                                        snapshot.child("incorrect_answers").child("0").getValue().toString(),
-                                        snapshot.child("incorrect_answers").child("1").getValue().toString(),
-                                        snapshot.child("incorrect_answers").child("2").getValue().toString());
-                            }
-                        })
-                        .build();*/
     }
 }
