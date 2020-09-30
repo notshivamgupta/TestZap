@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -18,6 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class ExamPage extends AppCompatActivity {
 TextView question,ops1,ops2,ops3,ops4;
 private FirebaseDatabase fDbase;
@@ -25,6 +29,7 @@ private DatabaseReference dref;
 private Button nextques;
 int total=1;
 String correct_ans;
+    public int counter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,7 @@ String correct_ans;
         ops4=findViewById(R.id.option4);
         nextques=findViewById(R.id.buttonchangeques);
         fDbase = FirebaseDatabase.getInstance();
+        final ArrayList<String> list = new ArrayList<String>();
 
         if (total>5) {
         }
@@ -45,14 +51,22 @@ String correct_ans;
             dref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                     Questionmodel Question = snapshot.getValue(Questionmodel.class);
                     question.setText(Question.getQuestion());
                     correct_ans=Question.getOption0();
-                    ops1.setText(correct_ans);
-                    ops2.setText(Question.getOption1());
-                    ops3.setText(Question.getOption2());
-                    ops4.setText(Question.getOption3());
+
+                    list.add(Question.getOption0());
+                    list.add(Question.getOption1());
+                    list.add(Question.getOption2());
+                    list.add(Question.getOption3());
+
+                    Collections.shuffle(list);
+
+                    ops1.setText(list.get(0));
+                    ops2.setText(list.get(1));
+                    ops3.setText(list.get(2));
+                    ops4.setText(list.get(3));
+                    list.clear();
                 }
 
                 @Override
@@ -72,10 +86,18 @@ String correct_ans;
                             Questionmodel Question = snapshot.getValue(Questionmodel.class);
                             question.setText(Question.getQuestion());
                             correct_ans=Question.getOption0();
-                            ops1.setText(correct_ans);
-                            ops2.setText(Question.getOption1());
-                            ops3.setText(Question.getOption2());
-                            ops4.setText(Question.getOption3());
+                            list.add(Question.getOption0());
+                            list.add(Question.getOption1());
+                            list.add(Question.getOption2());
+                            list.add(Question.getOption3());
+
+                            Collections.shuffle(list);
+
+                            ops1.setText(list.get(0));
+                            ops2.setText(list.get(1));
+                            ops3.setText(list.get(2));
+                            ops4.setText(list.get(3));
+                            list.clear();
                         }
 
                         @Override
@@ -88,7 +110,18 @@ String correct_ans;
                 }
             });
         }
-
+        final TextView counttime=findViewById(R.id.counttime);
+        new CountDownTimer(50000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                counttime.setText(String.valueOf(counter));
+                counter++;
+            }
+            @Override
+            public void onFinish() {
+                counttime.setText("Finished");
+            }
+        }.start();
 
     }
 }
