@@ -243,11 +243,11 @@
             app:layout_constraintTop_toBottomOf="@+id/timelimittxt" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonstart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:text="Button"
+            android:text="Start"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

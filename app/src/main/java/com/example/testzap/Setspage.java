@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -36,6 +37,7 @@ public class Setspage extends AppCompatActivity {
     RecyclerView recsetsview;
     SetsAdapter myadapter;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +82,7 @@ public class Setspage extends AppCompatActivity {
         im1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Setspage.this,ExamPage.class));
+                startActivity(new Intent(Setspage.this,HomeActivity.class));
             }
         });
     }
