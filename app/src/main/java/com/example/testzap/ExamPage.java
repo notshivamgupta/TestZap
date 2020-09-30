@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
@@ -22,7 +24,7 @@ private FirebaseDatabase fDbase;
 private DatabaseReference dref;
 private Button nextques;
 int total=1;
-
+String correct_ans;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,8 @@ int total=1;
 
                     Questionmodel Question = snapshot.getValue(Questionmodel.class);
                     question.setText(Question.getQuestion());
-                    ops1.setText(Question.getOption0());
+                    correct_ans=Question.getOption0();
+                    ops1.setText(correct_ans);
                     ops2.setText(Question.getOption1());
                     ops3.setText(Question.getOption2());
                     ops4.setText(Question.getOption3());
@@ -68,7 +71,8 @@ int total=1;
 
                             Questionmodel Question = snapshot.getValue(Questionmodel.class);
                             question.setText(Question.getQuestion());
-                            ops1.setText(Question.getOption0());
+                            correct_ans=Question.getOption0();
+                            ops1.setText(correct_ans);
                             ops2.setText(Question.getOption1());
                             ops3.setText(Question.getOption2());
                             ops4.setText(Question.getOption3());
