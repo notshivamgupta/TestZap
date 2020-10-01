@@ -58,18 +58,10 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-
         t1= view.findViewById(R.id.namehome);
 
-
-
-
         fAuth= FirebaseAuth.getInstance();
-
-
         fStore=FirebaseFirestore.getInstance();
 
         userId = fAuth.getCurrentUser() .getUid();
@@ -98,7 +90,6 @@ public class HomeFragment extends Fragment {
                 t1.setText(s);
             }
         });
-        // Neem ka patta kadwa hai shivam sala bhadwa hai
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
         Logout=view.findViewById(R.id.logoutbutton);
@@ -130,9 +121,6 @@ public class HomeFragment extends Fragment {
                alertBuilder.show();
            }
        });
-
-
-     //  t1.setText(s);
         manager=new GridLayoutManager(view.getContext(),2);
         rView.setLayoutManager(manager);
         dataSource=new DataSource();

@@ -28,6 +28,7 @@ Intent intent;
             public void onClick(View view) {
                 intent =new Intent(Get_started.this,Register.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

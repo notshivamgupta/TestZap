@@ -189,6 +189,7 @@
                 android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/test_completed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/icon_check"
@@ -230,13 +231,17 @@
                 android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/time_taken"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/icon_duration"
-                android:layout_margin="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_toRightOf="@+id/icon_duration"
                 android:fontFamily="@font/poppins_bold"
-                android:text="10"
+                android:text="5"
                 android:textColor="#2E2E2E"
                 android:textSize="32dp" />
         </RelativeLayout>
