@@ -101,14 +101,15 @@
 
         <Button
             android:id="@+id/option1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
             android:layout_marginBottom="316dp"
             android:background="@drawable/opton_1"
             android:fontFamily="@font/poppins_medium"
             android:text="Option 1"
             android:textAllCaps="false"
             android:textColor="#6F6F6F "
+            android:layout_marginHorizontal="20dp"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -117,12 +118,13 @@
 
         <Button
             android:id="@+id/option2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
             android:layout_marginBottom="240dp"
             android:background="@drawable/option_2"
             android:fontFamily="@font/poppins_medium"
             android:text="Option 2"
+            android:layout_marginHorizontal="20dp"
             android:textAllCaps="false"
             android:textColor="#6F6F6F "
             android:textSize="20dp"
@@ -133,8 +135,9 @@
 
         <Button
             android:id="@+id/option4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="70dp"
             android:layout_marginBottom="88dp"
             android:background="@drawable/option_4"
             android:fontFamily="@font/poppins_medium"
@@ -149,8 +152,9 @@
 
         <Button
             android:id="@+id/option3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="70dp"
             android:layout_marginBottom="164dp"
             android:background="@drawable/option_3"
             android:fontFamily="@font/poppins_medium"

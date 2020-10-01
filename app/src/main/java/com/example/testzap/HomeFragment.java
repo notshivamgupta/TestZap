@@ -98,7 +98,7 @@ public class HomeFragment extends Fragment {
                 t1.setText(s);
             }
         });
-
+        // Neem ka patta kadwa hai shivam sala bhadwa hai
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
         Logout=view.findViewById(R.id.logoutbutton);
