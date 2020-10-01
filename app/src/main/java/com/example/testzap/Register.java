@@ -26,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import org.w3c.dom.Document;
 import org.w3c.dom.Text;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,6 +69,9 @@ Intent intent,a;
              final String Email=Rt2.getText().toString().trim();
              final String Pass=Rt3.getText().toString().trim();
              final String Name=Rt1.getText().toString();
+             final String status="Available";
+               final int test_completed=0;
+               final int time_taken=0;
              if(TextUtils.isEmpty(Email)) {
 
                  Rt2.setError("Email is Required");
@@ -94,6 +98,9 @@ Intent intent,a;
                          Map<String,Object>user=new HashMap<>();
                          user.put("Full_Name",Name);
                          user.put("Email_Id",Email);
+                         user.put("status",status);
+                         user.put("test_completed",test_completed);
+                         user.put("time_taken",time_taken);
                          documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                              @Override
                              public void onSuccess(Void aVoid) {
