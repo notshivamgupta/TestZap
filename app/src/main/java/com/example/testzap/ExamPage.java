@@ -5,21 +5,15 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,18 +46,18 @@ public class ExamPage extends AppCompatActivity {
         fDbase = FirebaseDatabase.getInstance();
         final ArrayList<String> list = new ArrayList<String>();
 
-        dref = fDbase.getReference().child("Question").child(Integer.toString(total));
+        dref = fDbase.getReference().child("subject_name").child("General Knowledge").child("sets").child("1").child(Integer.toString(total));
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Questionmodel Question = snapshot.getValue(Questionmodel.class);
                 question.setText(Question.getQuestion());
-                correct_ans=Question.getOption0();
+                correct_ans=Question.getCorrect_answer();
 
-                list.add(Question.getOption0());
-                list.add(Question.getOption1());
-                list.add(Question.getOption2());
-                list.add(Question.getOption3());
+                list.add(correct_ans);
+                list.add(Question.getOption_1());
+                list.add(Question.getOption_2());
+                list.add(Question.getOption_3());
 
                 Collections.shuffle(list);
 
@@ -304,18 +298,19 @@ public class ExamPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (total < 8) {
-                    dref = fDbase.getReference().child("Question").child(Integer.toString(total));
+                    dref = fDbase.getReference().child("subject_name").child("General Knowledge").child("sets").child("1").child(Integer.toString(total));
                     dref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                             Questionmodel Question = snapshot.getValue(Questionmodel.class);
                             question.setText(Question.getQuestion());
-                            correct_ans = Question.getOption0();
-                            list.add(Question.getOption0());
-                            list.add(Question.getOption1());
-                            list.add(Question.getOption2());
-                            list.add(Question.getOption3());
+                            correct_ans=Question.getCorrect_answer();
+
+                            list.add(correct_ans);
+                            list.add(Question.getOption_1());
+                            list.add(Question.getOption_2());
+                            list.add(Question.getOption_3());
 
                             Collections.shuffle(list);
 
@@ -564,7 +559,7 @@ public class ExamPage extends AppCompatActivity {
             }
         });
         final TextView counttime=findViewById(R.id.counttime);
-        new CountDownTimer(10000,1000) {
+        new CountDownTimer(50000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 counttime.setText(String.valueOf(counter));

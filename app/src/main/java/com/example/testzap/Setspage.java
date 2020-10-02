@@ -68,7 +68,7 @@ public class Setspage extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Setsmodel> options =
                 new FirebaseRecyclerOptions.Builder<Setsmodel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Sets"), new SnapshotParser<Setsmodel>() {
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("subject_name").child("General Knowledge").child("sets"), new SnapshotParser<Setsmodel>() {
                             @NonNull
                             @Override
                             public Setsmodel parseSnapshot(@NonNull DataSnapshot snapshot) {

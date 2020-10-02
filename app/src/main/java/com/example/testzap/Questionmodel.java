@@ -1,55 +1,57 @@
 package com.example.testzap;
 
 public class Questionmodel {
-    String Question,Option0,Option2,Option3,Option1;
+
+    String question ,correct_answer,option_3,option_2,option_1;
     public Questionmodel() {
     }
 
-    public Questionmodel(String question, String option0, String option2, String option3, String option1) {
-        Question = question;
-        Option0 = option0;
-        Option2 = option2;
-        Option3 = option3;
-        Option1 = option1;
+    public Questionmodel(String question, String correct_answer, String option_3, String option_2, String option_1) {
+        this.question = question;
+        this.correct_answer = correct_answer;
+        this.option_3 = option_3;
+        this.option_2 = option_2;
+        this.option_1 = option_1;
     }
 
     public String getQuestion() {
-        return Question;
+        return question;
     }
 
     public void setQuestion(String question) {
-        Question = question;
+        this.question = question;
     }
 
-    public String getOption0() {
-        return Option0;
+    public String getCorrect_answer() {
+        return correct_answer;
     }
 
-    public void setOption0(String option0) {
-        Option0 = option0;
+    public void setCorrect_answer(String correct_answer) {
+        this.correct_answer = correct_answer;
     }
 
-    public String getOption2() {
-        return Option2;
+    public String getOption_3() {
+        return option_3;
     }
 
-    public void setOption2(String option2) {
-        Option2 = option2;
+    public void setOption_3(String option_3) {
+        this.option_3 = option_3;
     }
 
-    public String getOption3() {
-        return Option3;
+    public String getOption_2() {
+        return option_2;
     }
 
-    public void setOption3(String option3) {
-        Option3 = option3;
+    public void setOption_2(String option_2) {
+        this.option_2 = option_2;
     }
 
-    public String getOption1() {
-        return Option1;
+    public String getOption_1() {
+        return option_1;
     }
 
-    public void setOption1(String option1) {
-        Option1 = option1;
+    public void setOption_1(String option_1) {
+        this.option_1 = option_1;
     }
 }
+
