@@ -320,6 +320,7 @@ public class ExamPage extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+
                         }
                     });
                     total++;
