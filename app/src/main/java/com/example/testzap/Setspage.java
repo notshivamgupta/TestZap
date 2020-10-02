@@ -51,15 +51,12 @@ public class Setspage extends AppCompatActivity {
         recsetsview.setLayoutManager(new GridLayoutManager(Setspage.this,1));
 
 
-        /*Query query = FirebaseDatabase.getInstance()
-                .getReference()
-                .child("posts");*/
-
-
         Intent intent=getIntent();
         int c=intent.getIntExtra("Subject Colour",0);
-        setstxt.setText(intent.getStringExtra("Subject Name"));
-        setsimg.setImageResource(intent.getIntExtra("Subject Image",0));
+        int img=intent.getIntExtra("Subject Image",0);
+        String name=intent.getStringExtra("Subject Name");
+        setstxt.setText(name);
+        setsimg.setImageResource(img);
         setslyt.setBackgroundResource(R.drawable.linearsets);
 
         GradientDrawable drawable = (GradientDrawable) setslyt.getBackground();
@@ -77,7 +74,7 @@ public class Setspage extends AppCompatActivity {
                         })
                         .build();
 
-        myadapter=new SetsAdapter(options);
+        myadapter=new SetsAdapter(options,c,name,img);
         recsetsview.setAdapter(myadapter);
         im1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,8 +15,14 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class SetsAdapter extends FirebaseRecyclerAdapter<Setsmodel,SetsAdapter.SetsViewHolder> {
-    public SetsAdapter(@NonNull FirebaseRecyclerOptions<Setsmodel> options) {
+    public int colour, img;
+String name;
+
+    public SetsAdapter(@NonNull FirebaseRecyclerOptions<Setsmodel> options,int a,String na, int b) {
         super(options);
+        colour=a;
+        img=b;
+        name=na;
     }
 
     @Override
@@ -25,8 +31,13 @@ public class SetsAdapter extends FirebaseRecyclerAdapter<Setsmodel,SetsAdapter.S
         setsViewHolder.ButSets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent=new Intent(view.getContext(),start_test.class);
+
                 intent.putExtra("Set",setsmodel.Name);
+                intent.putExtra("Colour",colour);
+                intent.putExtra("Subject Name",name);
+                intent.putExtra("Subject Image",img);
                 view.getContext().startActivity(intent);
             }
         });

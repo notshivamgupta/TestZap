@@ -56,10 +56,10 @@
                 android:textSize="18dp"
                 app:layout_constraintBottom_toTopOf="@+id/sub_set"
                 app:layout_constraintEnd_toEndOf="@+id/sub_txttxt"
-                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintHorizontal_bias="0.254"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.857" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/sub_set"
@@ -74,7 +74,7 @@
                 android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.321"
+                app:layout_constraintHorizontal_bias="0.273"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sub_txttxt"
                 app:layout_constraintVertical_bias="0.0" />
@@ -90,23 +90,23 @@
                 android:textColor="#ffffff"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.323"
+                app:layout_constraintHorizontal_bias="0.268"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sub_set" />
 
             <TextView
                 android:id="@+id/sub_txttxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="214dp"
+                android:layout_height="52dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="10dp"
                 android:text="Physics"
                 android:textColor="#ffffff"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.681"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -148,10 +148,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout2"
-        android:layout_width="421dp"
-        android:layout_height="338dp"
+        android:layout_width="403dp"
+        android:layout_height="459dp"
         android:background="#F6F6F6"
         android:elevation="10dp"
+
         android:orientation="vertical"
         android:weightSum="1"
         app:layout_constraintBottom_toBottomOf="parent"
