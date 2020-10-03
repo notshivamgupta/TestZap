@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 public class ExamPage extends AppCompatActivity {
     TextView question,ops1,ops2,ops3,ops4;
@@ -33,6 +36,7 @@ public class ExamPage extends AppCompatActivity {
     public int counter;
     int correct=0;
     int incorrect=0;
+    CountDownTimer timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +51,27 @@ public class ExamPage extends AppCompatActivity {
         getquestion();
         checkans();
         final TextView counttime=findViewById(R.id.counttime);
-        new CountDownTimer(50000,1000) {
+        CountDownTimer timer;
+        timer= new CountDownTimer(600000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                counttime.setText(String.valueOf(counter));
+                //counttime.setText(String.valueOf(counter));
+
+                counttime.setText(""+String.format("%d : %d",
+                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+
+                if((TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished)==0) &&
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))==10)
+                {
+                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v.vibrate(500);
+                }
+                /* every second vibrate
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(500);*/
                 counter++;
             }
             @Override
@@ -164,6 +185,7 @@ public class ExamPage extends AppCompatActivity {
                 b[0] ="";
                 c[0] ="";
                 d[0] ="correct";
+
             }
         });
         nextques.setOnClickListener(new View.OnClickListener() {
@@ -378,6 +400,7 @@ public class ExamPage extends AppCompatActivity {
                         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                         @Override
                         public void run() {
+                            timer.cancel();
                             Intent intent=new Intent(ExamPage.this,result.class);
                             intent.putExtra("Correct",correct);
                             intent.putExtra("Incorrect",incorrect);
