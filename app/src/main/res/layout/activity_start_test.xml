@@ -148,8 +148,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout2"
-        android:layout_width="403dp"
-        android:layout_height="459dp"
+        android:layout_width="410dp"
+        android:layout_height="339dp"
         android:background="#F6F6F6"
         android:elevation="10dp"
 
@@ -179,7 +179,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.688" />
+            app:layout_constraintVertical_bias="0.636" />
 
         <TextView
             android:id="@+id/timelimit"

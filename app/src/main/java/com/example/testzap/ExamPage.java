@@ -28,7 +28,7 @@ public class ExamPage extends AppCompatActivity {
     private FirebaseDatabase fDbase;
     private DatabaseReference dref;
     private Button nextques;
-    int total=1;
+    int total=0;
     String correct_ans;
     public int counter;
     int correct=0;
@@ -42,11 +42,39 @@ public class ExamPage extends AppCompatActivity {
         ops2=findViewById(R.id.option2);
         ops3=findViewById(R.id.option3);
         ops4=findViewById(R.id.option4);
-        nextques=findViewById(R.id.buttonchangeques);
-        fDbase = FirebaseDatabase.getInstance();
-        final ArrayList<String> list = new ArrayList<String>();
 
-        dref = fDbase.getReference().child("subject_name").child("General Knowledge").child("sets").child("1").child(Integer.toString(total));
+        nextques=findViewById(R.id.buttonchangeques);
+        getquestion();
+        checkans();
+        final TextView counttime=findViewById(R.id.counttime);
+        new CountDownTimer(50000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                counttime.setText(String.valueOf(counter));
+                counter++;
+            }
+            @Override
+            public void onFinish() {
+                counttime.setText("Finished");
+                Toast.makeText(ExamPage.this, "Time Out", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(ExamPage.this,result.class);
+                intent.putExtra("Correct",correct);
+                intent.putExtra("Incorrect",incorrect);
+                startActivity(intent);
+                finish();
+            }
+        }.start();
+
+    }
+    public void getquestion()
+    {
+        Intent intent=getIntent();
+        String name=intent.getStringExtra("Subject Name");
+        final String subset=intent.getStringExtra("Set");
+        fDbase = FirebaseDatabase.getInstance();
+         final ArrayList<String> list = new ArrayList<String>();
+
+        dref = fDbase.getReference().child("subject_name").child(name).child("sets").child(subset).child(Integer.toString(total));
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -73,113 +101,40 @@ public class ExamPage extends AppCompatActivity {
 
             }
         });
-        total++;
+      total++;
+    }
+    public void checkans()
+    {
+        final String[] a = new String[1];
+        final String[] b = new String[1];
+        final String[] c=new String[1];;
+        final String[] d=new String[1];;
         ops1.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                if (ops1.getText().toString().equals(correct_ans))
-                {
-                    correct++;
-                    ops1.setBackground(getDrawable(R.drawable.right_a));
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void run() {
-
-                            ops1.setBackground(getDrawable(R.drawable.opton_1));
-                        }
-                    },1500);
-                }
-                else
-                {
-                    incorrect++;
-                    ops1.setBackground(getDrawable(R.drawable.wrong_a));
-                    if (ops2.getText().toString().equals(correct_ans))
-                    {
-                        ops2.setBackground(getDrawable(R.drawable.right_b));
-                    }
-                    else
-                    if (ops3.getText().toString().equals(correct_ans))
-                    {
-                        ops3.setBackground(getDrawable(R.drawable.right_c));
-                    }
-                    else
-                    if (ops4.getText().toString().equals(correct_ans))
-                    {
-                        ops4.setBackground(getDrawable(R.drawable.right_d));
-                    }
-
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void run() {
-
-
-
-                            ops1.setBackground(getDrawable(R.drawable.opton_1));
-                            ops2.setBackground(getDrawable(R.drawable.option_2));
-                            ops3.setBackground(getDrawable(R.drawable.option_3));
-                            ops4.setBackground(getDrawable(R.drawable.option_4));
-                        }
-                    },1500);
-                }
-
+                ops1.setBackground(getDrawable(R.drawable.selected_a));
+                ops2.setBackground(getDrawable(R.drawable.option_2));
+                ops3.setBackground(getDrawable(R.drawable.option_3));
+                ops4.setBackground(getDrawable(R.drawable.option_4));
+                a[0] ="correct";
+                b[0] ="";
+                c[0] ="";
+                d[0] ="";
             }
         });
-
         ops2.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                if (ops2.getText().toString().equals(correct_ans))
-                {
-                    correct++;
-                    ops2.setBackground(getDrawable(R.drawable.right_b));
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void run() {
-                            ops2.setBackground(getDrawable(R.drawable.option_2));
-
-                        }
-                    },1500);
-                }
-                else
-                {
-                    incorrect++;
-                    ops2.setBackground(getDrawable(R.drawable.wrong_b));
-                    if (ops1.getText().toString().equals(correct_ans))
-                    {
-                        ops1.setBackground(getDrawable(R.drawable.right_a));
-                    }
-                    else
-                    if (ops3.getText().toString().equals(correct_ans))
-                    {
-                        ops3.setBackground(getDrawable(R.drawable.right_c));
-                    }
-                    else
-                    if (ops4.getText().toString().equals(correct_ans))
-                    {
-                        ops4.setBackground(getDrawable(R.drawable.right_d));
-                    }
-
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void run() {
-                            ops1.setBackground(getDrawable(R.drawable.opton_1));
-                            ops2.setBackground(getDrawable(R.drawable.option_2));
-                            ops3.setBackground(getDrawable(R.drawable.option_3));
-                            ops4.setBackground(getDrawable(R.drawable.option_4));
-
-                        }
-                    },1500);
-                }
+                ops2.setBackground(getDrawable(R.drawable.selected_b));
+                ops1.setBackground(getDrawable(R.drawable.opton_1));
+                ops3.setBackground(getDrawable(R.drawable.option_3));
+                ops4.setBackground(getDrawable(R.drawable.option_4));
+                a[0] ="";
+                b[0] ="correct";
+                c[0] ="";
+                d[0] ="";
 
             }
         });
@@ -187,395 +142,252 @@ public class ExamPage extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                if (ops3.getText().toString().equals(correct_ans))
-                {
-                    correct++;
-                    ops3.setBackground(getDrawable(R.drawable.right_c));
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void run() {
-                            ops3.setBackground(getDrawable(R.drawable.option_3));
-
-                        }
-                    },1500);
-                }
-                else
-                {
-                    incorrect++;
-                    ops3.setBackground(getDrawable(R.drawable.wrong_c));
-                    if (ops1.getText().toString().equals(correct_ans))
-                    {
-                        ops1.setBackground(getDrawable(R.drawable.right_a));
-                    }
-                    else
-                    if (ops2.getText().toString().equals(correct_ans))
-                    {
-                        ops2.setBackground(getDrawable(R.drawable.right_b));
-                    }
-                    else
-                    if (ops4.getText().toString().equals(correct_ans))
-                    {
-                        ops4.setBackground(getDrawable(R.drawable.right_d));
-                    }
-
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void run() {
-                            ops1.setBackground(getDrawable(R.drawable.opton_1));
-                            ops2.setBackground(getDrawable(R.drawable.option_2));
-                            ops3.setBackground(getDrawable(R.drawable.option_3));
-                            ops4.setBackground(getDrawable(R.drawable.option_4));
-
-                        }
-                    },1500);
-                }
-
+                ops3.setBackground(getDrawable(R.drawable.selected_c));
+                ops2.setBackground(getDrawable(R.drawable.option_2));
+                ops1.setBackground(getDrawable(R.drawable.opton_1));
+                ops4.setBackground(getDrawable(R.drawable.option_4));
+                a[0] ="";
+                b[0] ="";
+                c[0] ="correct";
+                d[0] ="";
             }
         });
-
-
         ops4.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                if (ops4.getText().toString().equals(correct_ans))
-                {
-                    correct++;
-                    ops4.setBackground(getDrawable(R.drawable.right_d));
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void run() {
-                            ops4.setBackground(getDrawable(R.drawable.option_4));
+                ops3.setBackground(getDrawable(R.drawable.option_3));
+                ops2.setBackground(getDrawable(R.drawable.option_2));
+                ops1.setBackground(getDrawable(R.drawable.opton_1));
+                ops4.setBackground(getDrawable(R.drawable.selected_d));
+                a[0] ="";
+                b[0] ="";
+                c[0] ="";
+                d[0] ="correct";
+            }
+        });
+        nextques.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View view) {
+                if (total<10) {
 
+                    if (a[0].equals("correct"))
+                    {
+                        if (ops1.getText().toString().equals(correct_ans)) {
+                            ops1.setBackground(getDrawable(R.drawable.right_a));
+                            correct++;
+                        } else {
+                            ops1.setBackground(getDrawable(R.drawable.wrong_a));
+                            incorrect++;
+                            if (ops2.getText().toString().equals(correct_ans))
+                            {
+                                ops2.setBackground(getDrawable(R.drawable.right_b));
+                            }
+                            else
+                            if (ops3.getText().toString().equals(correct_ans))
+                            {
+                                ops3.setBackground(getDrawable(R.drawable.right_c));
+                            }
+                            else {
+                                ops4.setBackground(getDrawable(R.drawable.right_d));
+                            }
                         }
-                    },1500);
-                }
-                else
-                {
-                    incorrect++;
-                    ops4.setBackground(getDrawable(R.drawable.wrong_d));
-                    if (ops1.getText().toString().equals(correct_ans))
-                    {
-                        ops1.setBackground(getDrawable(R.drawable.right_a));
                     }
                     else
-                    if (ops3.getText().toString().equals(correct_ans))
+                    if (b[0].equals("correct"))
                     {
-                        ops3.setBackground(getDrawable(R.drawable.right_c));
+                        if (ops2.getText().toString().equals(correct_ans)) {
+                            ops2.setBackground(getDrawable(R.drawable.right_b));
+                            correct++;
+                        } else {
+                            ops2.setBackground(getDrawable(R.drawable.wrong_b));
+                            incorrect++;
+                            if (ops1.getText().toString().equals(correct_ans))
+                            {
+                                ops1.setBackground(getDrawable(R.drawable.right_a));
+                            }
+                            else
+                            if (ops3.getText().toString().equals(correct_ans))
+                            {
+                                ops3.setBackground(getDrawable(R.drawable.right_c));
+                            }
+                            else {
+                                ops4.setBackground(getDrawable(R.drawable.right_d));
+                            }
+                        }
                     }
-                    else
-                    if (ops2.getText().toString().equals(correct_ans))
+                    else if (c[0].equals("correct"))
                     {
-                        ops2.setBackground(getDrawable(R.drawable.right_b));
-                    }
 
-                    Handler handler=new Handler();
+                        if (ops3.getText().toString().equals(correct_ans)) {
+                            ops3.setBackground(getDrawable(R.drawable.right_c));
+                            correct++;
+                        } else {
+                            ops3.setBackground(getDrawable(R.drawable.wrong_c));
+                            incorrect++;
+                            if (ops1.getText().toString().equals(correct_ans))
+                            {
+                                ops1.setBackground(getDrawable(R.drawable.right_a));
+                            }
+                            else
+                            if (ops2.getText().toString().equals(correct_ans))
+                            {
+                                ops2.setBackground(getDrawable(R.drawable.right_b));
+                            }
+                            else {
+                                ops4.setBackground(getDrawable(R.drawable.right_d));
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                        if (ops4.getText().toString().equals(correct_ans)) {
+                            ops4.setBackground(getDrawable(R.drawable.right_d));
+                            correct++;
+                        } else {
+                            ops4.setBackground(getDrawable(R.drawable.wrong_d));
+                            incorrect++;
+                            if (ops1.getText().toString().equals(correct_ans))
+                            {
+                                ops1.setBackground(getDrawable(R.drawable.right_a));
+                            }
+                            else
+                            if (ops3.getText().toString().equals(correct_ans))
+                            {
+                                ops3.setBackground(getDrawable(R.drawable.right_c));
+                            }
+                            else {
+                                ops2.setBackground(getDrawable(R.drawable.right_b));
+                            }
+                        }
+                    }
+                    
+                    Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                         @Override
                         public void run() {
+
+
                             ops1.setBackground(getDrawable(R.drawable.opton_1));
                             ops2.setBackground(getDrawable(R.drawable.option_2));
                             ops3.setBackground(getDrawable(R.drawable.option_3));
                             ops4.setBackground(getDrawable(R.drawable.option_4));
-
+                            getquestion();
                         }
-                    },1500);
+                    }, 1500);
                 }
-
-            }
-        });
-
-
-
-        nextques.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (total < 8) {
-                    dref = fDbase.getReference().child("subject_name").child("General Knowledge").child("sets").child("1").child(Integer.toString(total));
-                    dref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            Questionmodel Question = snapshot.getValue(Questionmodel.class);
-                            question.setText(Question.getQuestion());
-                            correct_ans=Question.getCorrect_answer();
-
-                            list.add(correct_ans);
-                            list.add(Question.getOption_1());
-                            list.add(Question.getOption_2());
-                            list.add(Question.getOption_3());
-
-                            Collections.shuffle(list);
-
-                            ops1.setText(list.get(0));
-                            ops2.setText(list.get(1));
-                            ops3.setText(list.get(2));
-                            ops4.setText(list.get(3));
-                            list.clear();
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                    total++;
-
-                    ops1.setOnClickListener(new View.OnClickListener() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void onClick(View view) {
-                            if (ops1.getText().toString().equals(correct_ans))
-                            {
-                                correct++;
-                                ops1.setBackground(getDrawable(R.drawable.right_a));
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-
-                                        ops1.setBackground(getDrawable(R.drawable.opton_1));
-                                    }
-                                },1500);
-                            }
-                            else
-                            {
-                                incorrect++;
-                                ops1.setBackground(getDrawable(R.drawable.wrong_a));
-                                if (ops2.getText().toString().equals(correct_ans))
-                                {
-                                    ops2.setBackground(getDrawable(R.drawable.right_b));
-                                }
-                                else
-                                if (ops3.getText().toString().equals(correct_ans))
-                                {
-                                    ops3.setBackground(getDrawable(R.drawable.right_c));
-                                }
-                                else
-                                if (ops4.getText().toString().equals(correct_ans))
-                                {
-                                    ops4.setBackground(getDrawable(R.drawable.right_d));
-                                }
-
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-
-
-                                        ops1.setBackground(getDrawable(R.drawable.opton_1));
-                                        ops2.setBackground(getDrawable(R.drawable.option_2));
-                                        ops3.setBackground(getDrawable(R.drawable.option_3));
-                                        ops4.setBackground(getDrawable(R.drawable.option_4));
-
-                                    }
-                                },1500);
-                            }
-
-                        }
-                    });
-
-                    ops2.setOnClickListener(new View.OnClickListener() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void onClick(View view) {
+                else if (total==10)
+                {
+                    if (a[0].equals("correct"))
+                    {
+                        if (ops1.getText().toString().equals(correct_ans)) {
+                            ops1.setBackground(getDrawable(R.drawable.right_a));
+                            correct++;
+                        } else {
+                            ops1.setBackground(getDrawable(R.drawable.wrong_a));
+                            incorrect++;
                             if (ops2.getText().toString().equals(correct_ans))
                             {
-                                correct++;
                                 ops2.setBackground(getDrawable(R.drawable.right_b));
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-                                        ops2.setBackground(getDrawable(R.drawable.option_2));
-
-                                    }
-                                },1500);
                             }
                             else
-                            {
-                                incorrect++;
-                                ops2.setBackground(getDrawable(R.drawable.wrong_b));
-                                if (ops1.getText().toString().equals(correct_ans))
-                                {
-                                    ops1.setBackground(getDrawable(R.drawable.right_a));
-                                }
-                                else
-                                if (ops3.getText().toString().equals(correct_ans))
-                                {
-                                    ops3.setBackground(getDrawable(R.drawable.right_c));
-                                }
-                                else
-                                if (ops4.getText().toString().equals(correct_ans))
-                                {
-                                    ops4.setBackground(getDrawable(R.drawable.right_d));
-                                }
-
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-                                        ops1.setBackground(getDrawable(R.drawable.opton_1));
-                                        ops2.setBackground(getDrawable(R.drawable.option_2));
-                                        ops3.setBackground(getDrawable(R.drawable.option_3));
-                                        ops4.setBackground(getDrawable(R.drawable.option_4));
-
-                                    }
-                                },1500);
-                            }
-
-                        }
-                    });
-                    ops3.setOnClickListener(new View.OnClickListener() {
-                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                        @Override
-                        public void onClick(View view) {
                             if (ops3.getText().toString().equals(correct_ans))
                             {
-                                correct++;
                                 ops3.setBackground(getDrawable(R.drawable.right_c));
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-                                        ops3.setBackground(getDrawable(R.drawable.option_3));
-
-                                    }
-                                },1500);
+                            }
+                            else {
+                                ops4.setBackground(getDrawable(R.drawable.right_d));
+                            }
+                        }
+                    }
+                    else
+                    if (b[0].equals("correct"))
+                    {
+                        if (ops2.getText().toString().equals(correct_ans)) {
+                            ops2.setBackground(getDrawable(R.drawable.right_b));
+                            correct++;
+                        } else {
+                            ops2.setBackground(getDrawable(R.drawable.wrong_b));
+                            incorrect++;
+                            if (ops1.getText().toString().equals(correct_ans))
+                            {
+                                ops1.setBackground(getDrawable(R.drawable.right_a));
                             }
                             else
+                            if (ops3.getText().toString().equals(correct_ans))
                             {
-                                incorrect++;
-                                ops3.setBackground(getDrawable(R.drawable.wrong_c));
-                                if (ops1.getText().toString().equals(correct_ans))
-                                {
-                                    ops1.setBackground(getDrawable(R.drawable.right_a));
-                                }
-                                else
-                                if (ops2.getText().toString().equals(correct_ans))
-                                {
-                                    ops2.setBackground(getDrawable(R.drawable.right_b));
-                                }
-                                else
-                                if (ops4.getText().toString().equals(correct_ans))
-                                {
-                                    ops4.setBackground(getDrawable(R.drawable.right_d));
-                                }
-
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-                                        ops1.setBackground(getDrawable(R.drawable.opton_1));
-                                        ops2.setBackground(getDrawable(R.drawable.option_2));
-                                        ops3.setBackground(getDrawable(R.drawable.option_3));
-                                        ops4.setBackground(getDrawable(R.drawable.option_4));
-
-                                    }
-                                },1500);
+                                ops3.setBackground(getDrawable(R.drawable.right_c));
                             }
-
+                            else {
+                                ops4.setBackground(getDrawable(R.drawable.right_d));
+                            }
                         }
-                    });
+                    }
+                    else if (c[0].equals("correct"))
+                    {
 
+                        if (ops3.getText().toString().equals(correct_ans)) {
+                            ops3.setBackground(getDrawable(R.drawable.right_c));
+                            correct++;
+                        } else {
+                            ops3.setBackground(getDrawable(R.drawable.wrong_c));
+                            incorrect++;
+                            if (ops1.getText().toString().equals(correct_ans))
+                            {
+                                ops1.setBackground(getDrawable(R.drawable.right_a));
+                            }
+                            else
+                            if (ops2.getText().toString().equals(correct_ans))
+                            {
+                                ops2.setBackground(getDrawable(R.drawable.right_b));
+                            }
+                            else {
+                                ops4.setBackground(getDrawable(R.drawable.right_d));
+                            }
+                        }
+                    }
+                    else
+                    {
 
-                    ops4.setOnClickListener(new View.OnClickListener() {
+                        if (ops4.getText().toString().equals(correct_ans)) {
+                            ops4.setBackground(getDrawable(R.drawable.right_d));
+                            correct++;
+                        } else {
+                            ops4.setBackground(getDrawable(R.drawable.wrong_d));
+                            incorrect++;
+                            if (ops1.getText().toString().equals(correct_ans))
+                            {
+                                ops1.setBackground(getDrawable(R.drawable.right_a));
+                            }
+                            else
+                            if (ops3.getText().toString().equals(correct_ans))
+                            {
+                                ops3.setBackground(getDrawable(R.drawable.right_c));
+                            }
+                            else {
+                                ops2.setBackground(getDrawable(R.drawable.right_b));
+                            }
+                        }
+                    }
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
                         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                         @Override
-                        public void onClick(View view) {
-                            if (ops4.getText().toString().equals(correct_ans))
-                            {
-                                correct++;
-                                ops4.setBackground(getDrawable(R.drawable.right_d));
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-                                        ops4.setBackground(getDrawable(R.drawable.option_4));
-
-                                    }
-                                },1500);
-                            }
-                            else
-                            {
-                                incorrect++;
-                                ops4.setBackground(getDrawable(R.drawable.wrong_d));
-                                if (ops1.getText().toString().equals(correct_ans))
-                                {
-                                    ops1.setBackground(getDrawable(R.drawable.right_a));
-                                }
-                                else
-                                if (ops3.getText().toString().equals(correct_ans))
-                                {
-                                    ops3.setBackground(getDrawable(R.drawable.right_c));
-                                }
-                                else
-                                if (ops2.getText().toString().equals(correct_ans))
-                                {
-                                    ops2.setBackground(getDrawable(R.drawable.right_b));
-                                }
-
-                                Handler handler=new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                    @Override
-                                    public void run() {
-                                        ops1.setBackground(getDrawable(R.drawable.opton_1));
-                                        ops2.setBackground(getDrawable(R.drawable.option_2));
-                                        ops3.setBackground(getDrawable(R.drawable.option_3));
-                                        ops4.setBackground(getDrawable(R.drawable.option_4));
-
-                                    }
-                                },1500);
-                            }
-
+                        public void run() {
+                            Intent intent=new Intent(ExamPage.this,result.class);
+                            intent.putExtra("Correct",correct);
+                            intent.putExtra("Incorrect",incorrect);
+                            startActivity(intent);
+                            finish();
                         }
-                    });
-
-
-                }else
-                {
-
-                    Intent intent=new Intent(ExamPage.this,result.class);
-                    intent.putExtra("Correct",correct);
-                    intent.putExtra("Incorrect",incorrect);
-                    startActivity(intent);
-                    finish();
+                    }, 1500);
                 }
             }
         });
-        final TextView counttime=findViewById(R.id.counttime);
-        new CountDownTimer(50000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                counttime.setText(String.valueOf(counter));
-                counter++;
-            }
-            @Override
-            public void onFinish() {
-                counttime.setText("Finished");
-                Toast.makeText(ExamPage.this, "Time Out", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(ExamPage.this,result.class);
-                intent.putExtra("Correct",correct);
-                intent.putExtra("Incorrect",incorrect);
-                startActivity(intent);
-                finish();
-            }
-        }.start();
-
     }
+
 }

@@ -1,10 +1,12 @@
 package com.example.testzap;
 
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,10 +56,20 @@ String name;
     {
         TextView SetsTxt;
         Button ButSets;
+        ImageView but;
         public SetsViewHolder(@NonNull View itemView) {
             super(itemView);
             SetsTxt=itemView.findViewById(R.id.Settxt);
             ButSets=itemView.findViewById(R.id.BUTTONSETs);
+            but=itemView.findViewById(R.id.imageback);
+
+            but.setBackgroundResource(R.drawable.circle);
+            GradientDrawable drawa = (GradientDrawable) but.getBackground();
+            drawa.setColor(colour);
+
+            ButSets.setBackgroundResource(R.drawable.buttonsets);
+            GradientDrawable drawable = (GradientDrawable) ButSets.getBackground();
+            drawable.setColor(colour);
         }
         public void setTxt(String string) {
             SetsTxt.setText(string);

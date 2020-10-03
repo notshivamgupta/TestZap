@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class start_test extends AppCompatActivity {
     private TextView txtsub,subname,txtset,setname;
@@ -28,12 +29,12 @@ public class start_test extends AppCompatActivity {
         im1=findViewById(R.id.im1);
         starttest=findViewById(R.id.buttonstart);
         subimg=findViewById(R.id.sub_img);
-        Intent intent=getIntent();
+        final Intent intent=getIntent();
 
         int c= intent.getIntExtra("Colour",0);
-        String name=intent.getStringExtra("Subject Name");
+        final String name=intent.getStringExtra("Subject Name");
         int img=intent.getIntExtra("Subject Image",0);
-        String set=intent.getStringExtra("Set");
+        final String set=intent.getStringExtra("Set");
 
         subname.setText(name);
         setname.setText(set);
@@ -48,6 +49,8 @@ public class start_test extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent a=new Intent(start_test.this,ExamPage.class);
+                a.putExtra("Subject Name",name);
+                a.putExtra("Set",set);
                 startActivity(a);
             }
         });

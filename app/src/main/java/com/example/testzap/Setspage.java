@@ -46,6 +46,8 @@ public class Setspage extends AppCompatActivity {
         setstxt=findViewById(R.id.setstxt);
         setslyt=findViewById(R.id.setslnr);
         im1=findViewById(R.id.im1);
+
+
         recsetsview= (RecyclerView) findViewById(R.id.setsRecycler);
 
         recsetsview.setLayoutManager(new GridLayoutManager(Setspage.this,1));
@@ -65,7 +67,7 @@ public class Setspage extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Setsmodel> options =
                 new FirebaseRecyclerOptions.Builder<Setsmodel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("subject_name").child("General Knowledge").child("sets"), new SnapshotParser<Setsmodel>() {
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("subject_name").child(name).child("sets"), new SnapshotParser<Setsmodel>() {
                             @NonNull
                             @Override
                             public Setsmodel parseSnapshot(@NonNull DataSnapshot snapshot) {
