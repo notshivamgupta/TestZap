@@ -104,6 +104,20 @@
             app:layout_constraintHorizontal_bias="0.134"
             app:layout_constraintStart_toStartOf="parent" />
 
+
+        <ImageButton
+            android:id="@+id/addstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/buttoneditprofile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/status"
+            app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
         <TextView
             android:id="@+id/status_text"
             android:layout_width="325dp"
@@ -114,6 +128,7 @@
             android:gravity="center"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.  "
             android:textSize="16dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
@@ -140,16 +155,27 @@
             tools:ignore="MissingClass" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editPersonName"
             android:layout_width="327dp"
             android:layout_height="34dp"
-            android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/status" />
+            app:layout_constraintTop_toBottomOf="@+id/status"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:text="Done"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.755"
+            app:layout_constraintStart_toEndOf="@+id/addstatus"
+            app:layout_constraintTop_toBottomOf="@+id/user_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -164,7 +190,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="My Profile"
+            android:text="My Productivity"
             android:textSize="26dp"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
@@ -178,6 +204,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="80dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/task_bg"
             android:elevation="10dp"
             app:layout_constraintEnd_toStartOf="@+id/relativeLayout2"
@@ -259,8 +286,8 @@
         </RelativeLayout>
 
         <ImageView
-            android:layout_width="406dp"
-            android:layout_height="144dp"
+            android:layout_width="450dp"
+            android:layout_height="129dp"
             android:src="@drawable/multi_dots"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
