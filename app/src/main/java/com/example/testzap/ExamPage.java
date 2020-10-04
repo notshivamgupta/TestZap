@@ -37,6 +37,7 @@ import java.util.concurrent.TimeUnit;
 public class ExamPage extends AppCompatActivity {
     TextView question, ops1, ops2, ops3, ops4;
     private FirebaseDatabase fDbase;
+    private TextView questionno;
     private DatabaseReference dref;
     private Button nextques,endtest;
     int total = 0;
@@ -56,6 +57,7 @@ public class ExamPage extends AppCompatActivity {
         ops3 = findViewById(R.id.option3);
         ops4 = findViewById(R.id.option4);
         endtest=findViewById(R.id.button);
+        questionno=findViewById(R.id.textView3);
         nextques = findViewById(R.id.buttonchangeques);
         getquestion();
         checkans();
@@ -124,6 +126,7 @@ public class ExamPage extends AppCompatActivity {
 
 
     public void getquestion() {
+        questionno.setText("Question  "+(total+1));
         Intent intent = getIntent();
         name = intent.getStringExtra("Subject Name");
         subset = intent.getStringExtra("Set");

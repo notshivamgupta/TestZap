@@ -35,5 +35,5 @@ public class result extends AppCompatActivity {
           }
       });
     }
-    
+
 }
