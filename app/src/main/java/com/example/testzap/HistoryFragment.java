@@ -33,19 +33,10 @@ public class HistoryFragment extends Fragment {
         return view;
     }
     private void setUpRecyclerView(View view) {
-        /*Query query = historyRef.orderBy("priority", Query.Direction.DESCENDING);*/
-
 
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
-
-        /*String id = db.collection("History")
-                .document(userId).collection("collection_name").document().getId();
-        historyRef= db.collection("History").document(userId)
-                .collection("collection_name");*/
-
-
 
         Query query = db.collection("History").document(userId)
                 .collection("collection_name");

@@ -1,5 +1,6 @@
 package com.example.testzap;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+
+import java.util.ArrayList;
 
 public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, HistoryAdapter.HistoryHolder> {
 
-
+ArrayList pieEntries;
+    PieDataSet pieDataSet;
+    PieData pieData;
     public HistoryAdapter(@NonNull FirestoreRecyclerOptions<HistoryModel> options) {
         super(options);
     }
@@ -28,11 +37,19 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, Histo
             time=i+" sec";
         else
         {
-            int m=i/60,s=i%60;
             time = i/60+"m "+i%60+"s";
         }
         holder.time.setText(time);
         holder.correct.setText(Integer.toString(model.correct));
+        pieEntries=new ArrayList<>();
+        pieEntries.add(new PieEntry(model.correct,""));
+        pieEntries.add(new PieEntry(model.incorrect,""));
+        pieDataSet=new PieDataSet(pieEntries,"");
+        pieData=new PieData(pieDataSet);
+        pieData.setDrawValues(false);
+        holder.pieChart.setData(pieData);
+        pieDataSet.setColors(new int[]{Color.parseColor("#07E092"),Color.parseColor("#E76F51")});
+
     }
     @NonNull
     @Override
@@ -44,6 +61,7 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, Histo
 
     class HistoryHolder extends RecyclerView.ViewHolder {
         TextView sub,set,time,correct;
+        PieChart pieChart;
 
         public HistoryHolder(View itemView) {
             super(itemView);
@@ -51,7 +69,11 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, Histo
             set= itemView.findViewById(R.id.setfromfirestore);
             time= itemView.findViewById(R.id.timetakenhistory);
             correct= itemView.findViewById(R.id.correctpart);
-
+            pieChart=itemView.findViewById(R.id.piechart);
+            pieChart.getDescription().setEnabled(false);
+            pieChart.getLegend().setEnabled(false);
+            pieChart.setDrawSliceText(false);
+            pieChart.setHoleRadius(75f);
         }
     }
 }

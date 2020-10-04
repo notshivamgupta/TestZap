@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
         android:layout_height="match_parent"
-    android:background="#F6F6F6"
+    android:background="#FADDDD"
     tools:context=".HistoryFragment">
+
     <ImageView
         android:id="@+id/historybackimg"
+        android:layout_marginTop="-5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/historyback" />
+
     <TextView
         android:id="@+id/Texthistory"
         android:text="History"
@@ -24,7 +27,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerhistory"
-        android:layout_marginTop="120dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="93dp" />
 </RelativeLayout>
