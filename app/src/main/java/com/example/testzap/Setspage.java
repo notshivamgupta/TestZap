@@ -64,10 +64,10 @@ public class Setspage extends AppCompatActivity {
         GradientDrawable drawable = (GradientDrawable) setslyt.getBackground();
         drawable.setColor(c);
           im1.setBackgroundColor(c);
-
+      Query query= FirebaseDatabase.getInstance().getReference().child("subject_name").child(name).child("sets");
         FirebaseRecyclerOptions<Setsmodel> options =
                 new FirebaseRecyclerOptions.Builder<Setsmodel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("subject_name").child(name).child("sets"), new SnapshotParser<Setsmodel>() {
+                        .setQuery(query, new SnapshotParser<Setsmodel>() {
                             @NonNull
                             @Override
                             public Setsmodel parseSnapshot(@NonNull DataSnapshot snapshot) {
