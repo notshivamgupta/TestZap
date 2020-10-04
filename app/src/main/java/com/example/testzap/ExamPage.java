@@ -2,9 +2,11 @@ package com.example.testzap;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,7 +38,7 @@ public class ExamPage extends AppCompatActivity {
     TextView question, ops1, ops2, ops3, ops4;
     private FirebaseDatabase fDbase;
     private DatabaseReference dref;
-    private Button nextques;
+    private Button nextques,endtest;
     int total = 0;
     String correct_ans, name, subset;
     public int counter;
@@ -53,10 +55,35 @@ public class ExamPage extends AppCompatActivity {
         ops2 = findViewById(R.id.option2);
         ops3 = findViewById(R.id.option3);
         ops4 = findViewById(R.id.option4);
-
+        endtest=findViewById(R.id.button);
         nextques = findViewById(R.id.buttonchangeques);
         getquestion();
         checkans();
+        endtest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder=new AlertDialog.Builder(ExamPage.this);
+                builder.setMessage("Are you sure! you want to End the Exam");
+                builder.setCancelable(true);
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        timer.cancel();
+                        finish();
+                    }
+                });
+                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+
+            }
+        });
         final TextView counttime = findViewById(R.id.counttime);
         timer = new CountDownTimer(600000, 1000) {
             @Override
@@ -94,6 +121,7 @@ public class ExamPage extends AppCompatActivity {
         }.start();
 
     }
+
 
     public void getquestion() {
         Intent intent = getIntent();
@@ -389,9 +417,28 @@ public class ExamPage extends AppCompatActivity {
                             db.collection("History")
                                     .document(userId).collection("collection_name").document(id).set(user);
 
+        }
+        @Override
+    public void onBackPressed()
+        {
+               final AlertDialog.Builder builder=new AlertDialog.Builder(ExamPage.this);
+               builder.setMessage("Are you sure! you want to End the Exam");
+               builder.setCancelable(true);
+               builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
 
-                            /* DocumentReference documentReference = */
-                            /*db.collection("History")
-                                    .document(userId).set(user);*/
+                       timer.cancel();
+                       finish();
+                   }
+               });
+               builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+                       dialogInterface.cancel();
+                   }
+               });
+               AlertDialog alertDialog=builder.create();
+               alertDialog.show();
         }
 }

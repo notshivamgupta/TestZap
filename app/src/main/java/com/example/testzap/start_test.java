@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,7 +16,8 @@ import android.widget.Toast;
 public class start_test extends AppCompatActivity {
     private TextView txtsub,subname,txtset,setname;
     private Button starttest;
-    ImageView im1,subimg;
+    ImageView subimg;
+    ImageButton im1;
     LinearLayout setslyt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,13 @@ public class start_test extends AppCompatActivity {
         GradientDrawable drawable = (GradientDrawable) setslyt.getBackground();
         drawable.setColor(c);
         im1.setBackgroundColor(c);
-
+        im1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1=new Intent(start_test.this,Setspage.class);
+                startActivity(intent1);
+            }
+        });
         starttest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +60,7 @@ public class start_test extends AppCompatActivity {
                 a.putExtra("Subject Name",name);
                 a.putExtra("Set",set);
                 startActivity(a);
+                finish();
             }
         });
     }
