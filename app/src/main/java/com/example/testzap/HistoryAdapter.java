@@ -19,9 +19,21 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, Histo
 
     @Override
     protected void onBindViewHolder(@NonNull HistoryHolder holder, int position, @NonNull HistoryModel model) {
+        holder.sub.setText(model.sub_name);
+        holder.set.setText(model.sub_set);
 
+        int i=model.time_taken;
+        String time="";
+        if (i<60)
+            time=i+" sec";
+        else
+        {
+            int m=i/60,s=i%60;
+            time = i/60+"m "+i%60+"s";
+        }
+        holder.time.setText(time);
+        holder.correct.setText(Integer.toString(model.correct));
     }
-
     @NonNull
     @Override
     public HistoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

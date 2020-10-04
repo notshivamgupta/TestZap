@@ -21,7 +21,7 @@ import com.google.firebase.firestore.Query;
 public class HistoryFragment extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private DocumentReference historyRef;
+    private CollectionReference historyRef;
     private HistoryAdapter adapter;
     public HistoryFragment() {
     }
@@ -40,11 +40,15 @@ public class HistoryFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
 
-        String id = db.collection("History")
+        /*String id = db.collection("History")
                 .document(userId).collection("collection_name").document().getId();
         historyRef= db.collection("History").document(userId)
-                .collection("collection_name").document(id);
-        Query query = historyRef.get("name");
+                .collection("collection_name");*/
+
+
+
+        Query query = db.collection("History").document(userId)
+                .collection("collection_name");
         FirestoreRecyclerOptions<HistoryModel> options = new FirestoreRecyclerOptions.Builder<HistoryModel>()
                 .setQuery(query, HistoryModel.class)
                 .build();
@@ -64,5 +68,4 @@ public class HistoryFragment extends Fragment {
         super.onStop();
         adapter.stopListening();
     }
-}
 }
