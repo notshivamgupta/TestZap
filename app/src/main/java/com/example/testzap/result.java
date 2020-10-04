@@ -19,10 +19,11 @@ public class result extends AppCompatActivity {
       correct=findViewById(R.id.correctans);
       incorrect=findViewById(R.id.incorrectans);
       gotohome=findViewById(R.id.buttonresult);
-      int a,b;
+      int a,b,time;
         Intent intent=getIntent();
       a=intent.getIntExtra("Correct",0);
       b=intent.getIntExtra("Incorrect",0);
+      time= intent.getIntExtra("time",0);
     correct.setText(Integer.toString(a));
       incorrect.setText(Integer.toString(b));
 
