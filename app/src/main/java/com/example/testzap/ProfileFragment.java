@@ -100,12 +100,10 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-
                 String user=value.getString("Full_Name");
                 statu=value.getString("status");
                 long test_completed= value.getLong("test_completed");
                 long time_taken= value.getLong("time_taken");
-
 
                 name.setText(user);
                 status.setText(statu);

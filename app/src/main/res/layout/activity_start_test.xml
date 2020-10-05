@@ -20,7 +20,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         app:layout_constraintVertical_bias="0.0">
 
         <ImageButton
@@ -160,6 +159,19 @@
         app:layout_constraintTop_toBottomOf="@+id/layout1"
         app:layout_constraintVertical_bias="0.0">
 
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="411dp"
+            android:layout_height="412dp"
+            android:src="@drawable/start_test_vector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.78" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -169,19 +181,6 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="411dp"
-            android:layout_height="412dp"
-            android:src="@drawable/start_test_vector"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
         <TextView
             android:id="@+id/timelimit"
             android:layout_width="wrap_content"
@@ -217,12 +216,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="36dp"
-            android:text="Start"
             android:background="#E4582B"
+            android:text="Start"
             android:textColor="#ffff"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timelimit"
+            app:layout_constraintVertical_bias="0.295" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

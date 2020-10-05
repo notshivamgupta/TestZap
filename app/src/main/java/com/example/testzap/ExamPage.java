@@ -1,6 +1,7 @@
 package com.example.testzap;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,6 +49,7 @@ public class ExamPage extends AppCompatActivity {
     public int counter;
     int correct = 0;
     int incorrect = 0;
+    String userId;
     CountDownTimer timer;
 
     @Override
@@ -117,6 +122,7 @@ public class ExamPage extends AppCompatActivity {
                 intent.putExtra("Correct", correct);
                 intent.putExtra("Incorrect", incorrect);
                 storedata();
+                updatedate();
                 startActivity(intent);
                 finish();
             }
@@ -387,9 +393,8 @@ public class ExamPage extends AppCompatActivity {
                             intent.putExtra("Correct", correct);
                             intent.putExtra("Incorrect", incorrect);
                             intent.putExtra("time", counter);
-
                             storedata();
-
+                            updatedate();
                             startActivity(intent);
                             finish();
                         }
@@ -400,13 +405,11 @@ public class ExamPage extends AppCompatActivity {
     }
 
     public void storedata(){
-
             FirebaseAuth mAuth;
             FirebaseFirestore db;
             mAuth = FirebaseAuth.getInstance();
             db = FirebaseFirestore.getInstance();
-            String userId = mAuth.getCurrentUser().getUid();
-
+            userId = mAuth.getCurrentUser().getUid();
                             Map<String, Object> user = new HashMap<>();
                             user.put("sub_name", name);
                             user.put("sub_set", subset);
@@ -414,11 +417,36 @@ public class ExamPage extends AppCompatActivity {
                             user.put("correct", correct);
                             user.put("incorrect", incorrect);
 
-
                             String id = db.collection("History")
                                     .document(userId).collection("collection_name").document().getId();
                             db.collection("History")
                                     .document(userId).collection("collection_name").document(id).set(user);
+
+        }
+        public void updatedate()
+        {
+
+       final FirebaseFirestore fstore= FirebaseFirestore.getInstance();
+
+            DocumentReference documentReference= fstore.collection("Users").document(userId);
+
+            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                  long test_completed = value.getLong("test_completed");
+                         long time_taken = value.getLong("time_taken");
+
+                         long a=1+test_completed;
+                         long b= time_taken+counter;
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("test_completed",a );
+                    user.put("time_taken",b);
+                    fstore.collection("Users").document(userId).update(user);
+
+                }
+            });
+
+
 
         }
         @Override
