@@ -108,7 +108,7 @@ public class ProfileFragment extends Fragment {
                 name.setText(user);
                 status.setText(statu);
                 comp.setText(Long. toString(test_completed));
-                duration.setText(Long. toString(time_taken));
+                duration.setText(getTime(time_taken));
 
             }
         });
@@ -185,5 +185,18 @@ public class ProfileFragment extends Fragment {
               });
           }
         }
+    }
+
+    public String getTime(long t)
+    {
+        String time="";
+        if(t<60)
+            time=t+" Sec";
+        else if( t<3600)
+        time = t/60+"M "+t%60+"S";
+        else
+            time= (t/60)/60+"H "+(t/60)%60+"M";
+
+        return time;
     }
 }

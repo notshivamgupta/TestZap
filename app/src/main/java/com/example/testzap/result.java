@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class result extends AppCompatActivity {
-    private TextView correct,incorrect;
+    private TextView correct,incorrect,min,sec;
     private Button gotohome;
 
     @Override
@@ -19,14 +19,21 @@ public class result extends AppCompatActivity {
       correct=findViewById(R.id.correctans);
       incorrect=findViewById(R.id.incorrectans);
       gotohome=findViewById(R.id.buttonresult);
+      min=findViewById(R.id.min);
+      sec=findViewById(R.id.sec);
+
+
       int a,b,time;
         Intent intent=getIntent();
       a=intent.getIntExtra("Correct",0);
       b=intent.getIntExtra("Incorrect",0);
       time= intent.getIntExtra("time",0);
-    correct.setText(Integer.toString(a));
-      incorrect.setText(Integer.toString(b));
 
+        min.setText(Integer.toString(time/60));
+        sec.setText(Integer.toString(time%60));
+
+      correct.setText(Integer.toString(a));
+      incorrect.setText(Integer.toString(b));
       gotohome.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
@@ -35,5 +42,4 @@ public class result extends AppCompatActivity {
           }
       });
     }
-
 }

@@ -17,7 +17,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-
 public class HistoryFragment extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
