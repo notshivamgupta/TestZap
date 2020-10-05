@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -38,7 +39,8 @@ private ImageView ri1,ri2;
 private TextInputEditText Rt1,Rt2,Rt3,Rt4;
 private TextView Rtt1,Rtt2;
 CentralStorage storage;
-private Button Rb1,Rb2;
+private Button Rb1;
+private TextView Rb2;
 String userId;
 Intent intent,a;
     @Override
@@ -92,7 +94,19 @@ Intent intent,a;
                  public void onComplete(@NonNull Task<AuthResult> task) {
                      if (task.isSuccessful())
                      {
-                         Toast.makeText(Register.this, "User Created", Toast.LENGTH_SHORT).show();
+                         FirebaseUser users=mAuth.getCurrentUser();
+                         users.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                             @Override
+                             public void onSuccess(Void aVoid) {
+                                 Toast.makeText(Register.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show();
+
+                             }
+                         }).addOnFailureListener(new OnFailureListener() {
+                             @Override
+                             public void onFailure(@NonNull Exception e) {
+                                 Log.d("Tag","onFailure:  Email not sent"+e.getMessage());
+                             }
+                         });
                           userId= mAuth.getCurrentUser().getUid();
                          DocumentReference documentReference=db.collection("Users").document(userId);
                          Map<String,Object>user=new HashMap<>();
@@ -109,7 +123,7 @@ Intent intent,a;
                          });
                        storage.setData("USER",Email);
                        storage.setData("PASS",Pass);
-                          intent=new Intent(Register.this,HomeActivity.class);
+                          intent=new Intent(Register.this,Sign_in.class);
                          startActivity(intent);
                           finish();
                      }

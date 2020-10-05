@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/rimg2"
-        android:layout_width="278dp"
-        android:layout_height="155dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/log"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +40,7 @@
         android:textColor="#000000"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppins"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -63,6 +64,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:id="@+id/rti1"
+            android:fontFamily="@font/poppins"
             android:layout_height="match_parent"
             android:background="@drawable/input"
             android:drawableLeft="@drawable/ic_baseline_account_circle_24"
@@ -91,6 +93,7 @@
             android:inputType="text"
             android:hint="@string/enter_your_email"
             android:background="@drawable/input"
+            android:fontFamily="@font/poppins"
             android:textColorHint="#000000"
             android:drawableLeft="@drawable/ic_baseline_email_24"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -116,6 +119,7 @@
             android:background="@drawable/input"
             android:hint="@string/enter_password"
             android:id="@+id/rti3"
+            android:fontFamily="@font/poppins"
             android:drawableStart="@drawable/ic_baseline_vpn_key_24"
             android:textColorHint="#000000"
             android:drawableLeft="@drawable/ic_baseline_vpn_key_24"/>
@@ -143,6 +147,7 @@
             android:drawableStart="@drawable/ic_baseline_vpn_key_24"
             android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
             android:hint="@string/confirm_password"
+            android:fontFamily="@font/poppins"
             android:inputType="textPassword"
             android:textColorHint="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -165,34 +170,36 @@
 
     <TextView
         android:id="@+id/rt2"
-        android:layout_width="239dp"
-        android:layout_height="29dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="Already have an account ? "
         android:textColor="#000000"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+        app:layout_constraintVertical_bias="0.953" />
 
-    <Button
+    <TextView
         android:id="@+id/rb2"
-        android:layout_width="80dp"
-        android:layout_height="29dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#F6F6F6"
+        android:fontFamily="@font/poppins"
         android:gravity="left"
         android:text="sign in"
         android:textAllCaps="false"
         android:textColor="#E76F51"
-        android:textSize="25dp"
-        android:textStyle="bold"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toEndOf="@+id/rt2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+        app:layout_constraintVertical_bias="0.953" />
 </androidx.constraintlayout.widget.ConstraintLayout>

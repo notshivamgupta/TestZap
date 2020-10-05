@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
     app:cardCornerRadius="12dp"
+    app:cardElevation="10dp"
+    android:outlineSpotShadowColor="#000000"
     android:layout_weight="1"
     android:layout_height="wrap_content">
     <RelativeLayout
@@ -106,10 +108,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="1m 46s"
+
                 android:textColor="#000000"
                 android:textSize="25dp"
                 android:fontFamily="@font/poppins_semibold" />
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart"
             android:layout_marginTop="50dp"
@@ -120,9 +128,9 @@
         <TextView
             android:id="@+id/correctpart"
             android:layout_width="wrap_content"
-            android:text="8"
+            android:text="10"
             android:layout_marginTop="80dp"
-            android:layout_marginLeft="290dp"
+            android:layout_marginLeft="280dp"
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="24dp"
@@ -131,7 +139,7 @@
         <TextView
             android:id="@+id/totalaprt"
             android:layout_width="wrap_content"
-            android:text="/10"
+            android:text=" /10"
             android:textSize="24dp"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -150,6 +158,6 @@
             android:layout_marginTop="110dp"
             android:layout_marginLeft="295dp"
             />
-
+        </RelativeLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

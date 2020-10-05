@@ -204,6 +204,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="80dp"
+
             android:layout_marginRight="10dp"
             android:background="@drawable/task_bg"
             android:elevation="10dp"
