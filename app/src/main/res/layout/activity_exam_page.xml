@@ -45,18 +45,21 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView3" />
 
+
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginRight="28dp"
-            android:background="#F97B83"
+            android:background="@drawable/bg_timer_btn"
+            android:backgroundTint="#F97B83"
             android:text="END TEST"
             android:textColor="#790000"
+            app:layout_constraintBottom_toTopOf="@+id/counttime"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.948"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
 
         <TextView
             android:id="@+id/counttime"
@@ -64,25 +67,27 @@
             android:layout_height="45dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_timer_btn"
-            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center_horizontal"
             android:paddingLeft="20dp"
-            android:text="     24:08"
+            android:text="   24:08"
+            android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="26dp"
+            android:textStyle="italic"
             app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent" />
-
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="20dp"
             android:src="@drawable/ic_timer"
             app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.381"
+            app:layout_constraintHorizontal_bias="0.382"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -155,28 +160,29 @@
 
         <TextView
             android:id="@+id/question"
-            android:layout_width="346dp"
-            android:layout_height="113dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="343dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Question might anyone need to ask but dont know answer??"
             android:textSize="20dp"
             app:layout_constraintBottom_toTopOf="@+id/option1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.276"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/buttonchangeques"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_timer_btn"
             android:fontFamily="@font/poppins_medium"
             android:text="Next"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintHorizontal_bias="0.943"
             app:layout_constraintStart_toStartOf="parent" />
 
 

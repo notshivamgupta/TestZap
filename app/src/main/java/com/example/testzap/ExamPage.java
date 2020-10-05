@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -70,20 +71,20 @@ public class ExamPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder builder=new AlertDialog.Builder(ExamPage.this);
-                builder.setMessage("Are you sure! you want to End the Exam");
+                builder.setMessage("Are you sure? You want to END the Exam?");
                 builder.setCancelable(true);
-                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                        timer.cancel();
-                        finish();
-                    }
-                });
-                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
+
+                    }
+                });
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        timer.cancel();
+                        finish();
                     }
                 });
                 AlertDialog alertDialog=builder.create();
@@ -416,57 +417,48 @@ public class ExamPage extends AppCompatActivity {
                             user.put("time_taken", counter);
                             user.put("correct", correct);
                             user.put("incorrect", incorrect);
-
                             String id = db.collection("History")
                                     .document(userId).collection("collection_name").document().getId();
                             db.collection("History")
                                     .document(userId).collection("collection_name").document(id).set(user);
 
         }
-        public void updatedate()
-        {
+        public void updatedate() {
+            FirebaseFirestore fstore = FirebaseFirestore.getInstance();
+            final DocumentReference dRef = fstore.collection("Users").document(userId);
 
-       final FirebaseFirestore fstore= FirebaseFirestore.getInstance();
-
-            DocumentReference documentReference= fstore.collection("Users").document(userId);
-
-            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            dRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
-                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                  long test_completed = value.getLong("test_completed");
-                         long time_taken = value.getLong("time_taken");
+                public void onSuccess(DocumentSnapshot value) {
 
-                         long a=1+test_completed;
-                         long b= time_taken+counter;
+                    long a = (long) value.get("test_completed");
+                    long b = (long) value.get("time_taken");
+
                     Map<String, Object> user = new HashMap<>();
-                    user.put("test_completed",a );
-                    user.put("time_taken",b);
-                    fstore.collection("Users").document(userId).update(user);
-
+                    user.put("test_completed",1+a );
+                    user.put("time_taken",b+counter);
+                    dRef.update(user);
                 }
             });
-
-
-
         }
+
         @Override
     public void onBackPressed()
         {
                final AlertDialog.Builder builder=new AlertDialog.Builder(ExamPage.this);
-               builder.setMessage("Are you sure! you want to End the Exam");
+               builder.setMessage("Are you sure? You want to END the Exam?");
                builder.setCancelable(true);
-               builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int i) {
-
-                       timer.cancel();
-                       finish();
-                   }
-               });
-               builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+               builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialogInterface, int i) {
                        dialogInterface.cancel();
+                   }
+               });
+               builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+                       timer.cancel();
+                       finish();
                    }
                });
                AlertDialog alertDialog=builder.create();
