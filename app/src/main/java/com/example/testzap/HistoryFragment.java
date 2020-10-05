@@ -1,7 +1,6 @@
 package com.example.testzap;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class HistoryFragment extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference historyRef;
     private HistoryAdapter adapter;
     public HistoryFragment() {
     }
@@ -36,9 +33,10 @@ public class HistoryFragment extends Fragment {
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
+        CollectionReference cRef=db.collection("History").document(userId)
+        .collection("collection_name");
 
-        Query query = db.collection("History").document(userId)
-                .collection("collection_name");
+        Query query = cRef.orderBy("time");
         FirestoreRecyclerOptions<HistoryModel> options = new FirestoreRecyclerOptions.Builder<HistoryModel>()
                 .setQuery(query, HistoryModel.class)
                 .build();

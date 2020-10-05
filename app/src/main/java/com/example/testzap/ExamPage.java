@@ -34,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -174,9 +175,7 @@ public class ExamPage extends AppCompatActivity {
         final String[] a = new String[1];
         final String[] b = new String[1];
         final String[] c = new String[1];
-        ;
         final String[] d = new String[1];
-        ;
         ops1.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -411,12 +410,15 @@ public class ExamPage extends AppCompatActivity {
             mAuth = FirebaseAuth.getInstance();
             db = FirebaseFirestore.getInstance();
             userId = mAuth.getCurrentUser().getUid();
+        Calendar calendar = Calendar.getInstance();
+        long timeMilli = calendar.getTimeInMillis();
                             Map<String, Object> user = new HashMap<>();
                             user.put("sub_name", name);
                             user.put("sub_set", subset);
                             user.put("time_taken", counter);
                             user.put("correct", correct);
                             user.put("incorrect", incorrect);
+                            user.put("time",timeMilli);
                             String id = db.collection("History")
                                     .document(userId).collection("collection_name").document().getId();
                             db.collection("History")
