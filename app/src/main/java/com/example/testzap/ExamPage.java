@@ -110,9 +110,6 @@ public class ExamPage extends AppCompatActivity {
                     Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     v.vibrate(500);
                 }
-                /* every second vibrate
-                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v.vibrate(500);*/
                 counter++;
             }
 

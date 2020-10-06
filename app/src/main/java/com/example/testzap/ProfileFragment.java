@@ -1,7 +1,9 @@
 package com.example.testzap;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.drm.DrmStore;
 import android.net.Uri;
@@ -54,6 +56,7 @@ public class ProfileFragment extends Fragment {
     EditText editText;
     Button done;
     private FirebaseAuth mAuth;
+    Button log;
     FirebaseFirestore db;
     public ProfileFragment() {
     }
@@ -70,7 +73,34 @@ public class ProfileFragment extends Fragment {
         editstatus= view.findViewById(R.id.addstatus);
         editText=view.findViewById(R.id.editPersonName);
         done=view.findViewById(R.id.done);
+        log=view.findViewById(R.id.logout23button);
 
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertBuilder=new AlertDialog.Builder(getActivity());
+                alertBuilder.create();
+                alertBuilder.setMessage("Are You Sure You Want To Exit?");
+                alertBuilder.setCancelable(false);
+                alertBuilder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        new CentralStorage(getActivity()).clearData();
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getActivity(),Register.class));
+                        getActivity().finish();
+                    }
+                });
+                alertBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "The Operation Cancelled", Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertBuilder.show();
+            }
+        });
         fAuth=FirebaseAuth.getInstance();
         userId=fAuth.getCurrentUser().getUid();
 
@@ -154,6 +184,7 @@ public class ProfileFragment extends Fragment {
                 done.setVisibility(view.INVISIBLE);
             }
         });
+
         return view;
     }
 

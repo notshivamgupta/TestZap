@@ -48,13 +48,17 @@
 
 
         <Button
-            android:id="@+id/logoutbutton"
+            android:id="@+id/logout23button"
             android:layout_width="42dp"
             android:layout_height="37dp"
-            android:background="@drawable/ic_baseline_power_settings_new_24"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="343dp"
-            tools:layout_editor_absoluteY="24dp" />
+            android:background="@drawable/fghfgh"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.069"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/user_name"

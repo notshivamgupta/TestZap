@@ -1,25 +1,25 @@
 package com.example.testzap;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+        import androidx.annotation.NonNull;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.fragment.app.Fragment;
+        import androidx.recyclerview.widget.GridLayoutManager;
+        import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.view.Menu;
+        import android.view.MenuInflater;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.TextView;
 
-import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
-import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+        import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
+        import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+        import java.text.SimpleDateFormat;
+        import java.util.Date;
+        import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
