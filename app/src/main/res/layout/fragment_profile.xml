@@ -19,20 +19,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:background="#F0DDB1"
-            android:src="@drawable/backbtn_black"
-            app:layout_constraintBottom_toTopOf="@+id/profile_image"
-            app:layout_constraintEnd_toStartOf="@+id/profile_name"
-            app:layout_constraintHorizontal_bias="0.146"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.645" />
-
-        <ImageButton
             android:id="@+id/addImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,17 +47,14 @@
             app:layout_constraintVertical_bias="0.072" />
 
 
-        <ImageButton
-            android:id="@+id/dot3"
-            android:layout_width="32dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="28dp"
-            android:background="#F0DDB1"
-            android:src="@drawable/dotmenu_black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.78"
-            app:layout_constraintStart_toEndOf="@+id/profile_name"
-            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/logoutbutton"
+            android:layout_width="42dp"
+            android:layout_height="37dp"
+            android:background="@drawable/ic_baseline_power_settings_new_24"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="343dp"
+            tools:layout_editor_absoluteY="24dp" />
 
         <TextView
             android:id="@+id/user_name"
