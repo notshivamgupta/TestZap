@@ -49,8 +49,11 @@
         app:layout_constraintVertical_bias="0.372" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="370dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:paddingHorizontal="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="40:6"
         android:background="@drawable/input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,8 +77,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="370dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:paddingHorizontal="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="40:6"
         android:paddingLeft="10dp"
         android:background="@drawable/input"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,8 +105,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="370dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:paddingHorizontal="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="40:6"
         android:background="@drawable/input"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -126,8 +135,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="370dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:paddingHorizontal="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="40:6"
         android:background="@drawable/input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:passwordToggleEnabled="true"
@@ -156,7 +168,7 @@
         android:id="@+id/rb1"
         android:layout_width="238dp"
         android:layout_height="60dp"
-        android:background="#E76F51"
+        android:background="@drawable/register_button"
         android:text="@string/register"
         android:textColor="#ffff"
         android:textSize="25dp"

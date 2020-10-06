@@ -35,7 +35,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@+id/back"
             android:fontFamily="@font/poppins_bold"
             android:text=" My Profile"
             android:textColor="#000000"
@@ -48,24 +47,19 @@
 
 
         <Button
-            android:id="@+id/logout23button"
+            android:id="@+id/logoutbutton"
             android:layout_width="42dp"
             android:layout_height="37dp"
-            android:background="@drawable/fghfgh"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.956"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.069"
-            tools:ignore="MissingConstraints" />
+            android:background="@drawable/ic_baseline_power_settings_new_24"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="315dp"
+            tools:layout_editor_absoluteY="24dp" />
 
         <TextView
             android:id="@+id/user_name"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@+id/back"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
             android:text="My Profile"
@@ -82,7 +76,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@+id/back"
             android:fontFamily="@font/poppins_medium"
             android:text="Status:"
             android:textSize="24dp"
@@ -110,7 +103,6 @@
             android:layout_width="325dp"
             android:layout_height="63dp"
             android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@+id/back"
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.  "

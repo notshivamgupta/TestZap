@@ -48,10 +48,12 @@
         app:layout_constraintVertical_bias="0.354" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="370dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:paddingHorizontal="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="40:6"
         android:background="@drawable/input"
-        android:paddingLeft="10dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,10 +75,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="370dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:paddingHorizontal="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="40:6"
         android:background="@drawable/input"
-        android:paddingLeft="10dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,7 +123,7 @@
         android:id="@+id/sb1"
         android:layout_width="238dp"
         android:layout_height="60dp"
-        android:background="#E76F51"
+        android:background="@drawable/register_button"
         android:text="Sign In"
         android:textColor="#ffff"
         android:textSize="25dp"

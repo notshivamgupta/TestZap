@@ -73,7 +73,7 @@ public class ProfileFragment extends Fragment {
         editstatus= view.findViewById(R.id.addstatus);
         editText=view.findViewById(R.id.editPersonName);
         done=view.findViewById(R.id.done);
-        log=view.findViewById(R.id.logout23button);
+        log=view.findViewById(R.id.logoutbutton);
 
         log.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -67,7 +67,7 @@
         android:id="@+id/b"
         android:layout_width="238dp"
         android:layout_height="60dp"
-        android:background="#E76F51"
+        android:background="@drawable/register_button"
         android:text="Get Started"
         android:textColor="#ffff"
         android:textSize="25dp"
