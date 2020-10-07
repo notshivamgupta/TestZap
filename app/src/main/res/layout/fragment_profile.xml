@@ -51,9 +51,12 @@
             android:layout_width="42dp"
             android:layout_height="37dp"
             android:background="@drawable/ic_baseline_power_settings_new_24"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="315dp"
-            tools:layout_editor_absoluteY="24dp" />
+            app:layout_constraintBottom_toTopOf="@+id/user_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.573"
+            app:layout_constraintStart_toEndOf="@+id/profile_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.125" />
 
         <TextView
             android:id="@+id/user_name"
@@ -139,11 +142,11 @@
             android:layout_height="34dp"
             android:inputType="textPersonName"
             android:text=""
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/status"
-            android:visibility="invisible"/>
+            app:layout_constraintTop_toBottomOf="@+id/status" />
 
         <Button
             android:id="@+id/done"

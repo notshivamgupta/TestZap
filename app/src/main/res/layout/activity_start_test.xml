@@ -58,11 +58,12 @@
                 android:textColor="#ffffff"
                 android:textSize="18dp"
                 app:layout_constraintBottom_toTopOf="@+id/sub_set"
-                app:layout_constraintEnd_toEndOf="@+id/sub_txttxt"
-                app:layout_constraintHorizontal_bias="0.162"
+
+                app:layout_constraintEnd_toStartOf="@+id/sub_txttxt"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.8" />
 
             <TextView
                 android:id="@+id/sub_set"
@@ -102,15 +103,16 @@
                 android:layout_width="219dp"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="10dp"
                 android:text="General Knowledge"
                 android:textColor="#ffffff"
+
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -178,9 +180,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:src="@drawable/start_test_timeclock"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -216,18 +219,20 @@
 
         <Button
             android:id="@+id/buttonstart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="188dp"
+            android:layout_height="51dp"
             android:layout_marginBottom="36dp"
-            android:background="#E4582B"
+            android:background="@drawable/register_button"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Start"
             android:textColor="#ffff"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintHorizontal_bias="0.547"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timelimit"
-            app:layout_constraintVertical_bias="0.393" />
+            app:layout_constraintVertical_bias="0.946" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

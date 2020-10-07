@@ -43,7 +43,7 @@
             android:paddingLeft="25dp"
             android:text="Select a Subject :"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/res1"

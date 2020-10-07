@@ -2,6 +2,7 @@ package com.example.testzap;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +33,7 @@ import com.google.firebase.database.Query;
 public class Setspage extends AppCompatActivity {
     private ImageView setsimg;
     private TextView setstxt;
-    private LinearLayout setslyt;
+    private ConstraintLayout setslyt;
     private ImageButton im1;
     RecyclerView recsetsview;
     SetsAdapter myadapter;

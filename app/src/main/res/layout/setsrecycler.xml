@@ -4,9 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_weight="1"
-    android:layout_margin="5dp"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="10dp"
     app:cardCornerRadius="12dp"
-    android:elevation="10dp">
+    app:cardElevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -48,15 +49,16 @@
             android:layout_height="64dp"
             android:layout_marginLeft="70dp"
             android:text="Sets"
-            android:textColor="#000000"
+            android:textColor="#7B7B7B"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_semibold" />
         <Button
             android:id="@+id/BUTTONSETs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="250dp"
             android:text="Start"
+            android:fontFamily="@font/poppins_semibold"
             android:textAllCaps="false"
             android:textColor="#ffff"
             android:textSize="20dp"

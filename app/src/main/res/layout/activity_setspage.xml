@@ -8,10 +8,10 @@
     tools:context=".Setspage"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/setslnr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="308dp"
         android:background="@drawable/linearsets"
         android:elevation="10dp"
         android:orientation="vertical"
@@ -22,48 +22,68 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
+
+        <ImageButton
+            android:id="@+id/im1"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:src="@drawable/backbtn_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.102"
+            tools:ignore="MissingConstraints" />
 
-            <ImageButton
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="12dp"
-                android:id="@+id/im1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/backbtn_black" />
-
-            <TextView
-                android:id="@+id/setstxt"
-                android:layout_width="332dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:padding="10dp"
-                android:text="DUMMY DATA"
-                android:textColor="#ffff"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/setstxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="DUMMY DATA"
+            android:textAlignment="center"
+            android:textColor="#ffff"
+            android:textSize="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            app:layout_constraintBottom_toTopOf="@+id/setsimg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/im1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.615"
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/setsimg"
-            android:layout_width="397dp"
-            android:layout_height="177dp"
+            android:layout_width="361dp"
+            android:layout_height="182dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.738" />
 
 
-
-    </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/setsRecycler"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textsets"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingLeft="25dp"
+        android:text="Select a Set :"
+        android:textSize="30dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/setsRecycler"
+        android:paddingHorizontal="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="245dp" />
