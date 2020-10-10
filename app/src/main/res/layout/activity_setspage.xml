@@ -78,6 +78,16 @@
         android:text="Select a Set :"
         android:textSize="30dp" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationload"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#f6f6f6"
+        app:lottie_autoPlay="true"
+        android:layout_marginTop="50dp"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lodinganimation" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/setsRecycler"
         android:paddingHorizontal="5dp"
@@ -86,6 +96,7 @@
         android:layout_marginHorizontal="10dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="245dp" />
+        tools:layout_editor_absoluteY="245dp"
+        android:visibility="gone"/>
 
 </LinearLayout>

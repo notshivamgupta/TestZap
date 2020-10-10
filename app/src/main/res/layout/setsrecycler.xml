@@ -43,7 +43,7 @@
 
 
 
-    <TextView
+        <TextView
             android:id="@+id/Settxt"
             android:layout_width="244dp"
             android:layout_height="64dp"

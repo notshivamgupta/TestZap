@@ -36,7 +36,7 @@ public class HistoryFragment extends Fragment {
         CollectionReference cRef=db.collection("History").document(userId)
         .collection("collection_name");
 
-        Query query = cRef.orderBy("time");
+        Query query = cRef.orderBy("time",Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<HistoryModel> options = new FirestoreRecyclerOptions.Builder<HistoryModel>()
                 .setQuery(query, HistoryModel.class)
                 .build();

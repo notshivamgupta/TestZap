@@ -31,6 +31,7 @@ public class Splash extends AppCompatActivity {
         s.setAnimation(a1);
         b.setAnimation(a2);
         value=storage.getData("USER");
+
        new Handler().postDelayed(
                new Runnable() {
                    @Override

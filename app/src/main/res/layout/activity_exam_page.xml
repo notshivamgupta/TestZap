@@ -99,6 +99,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Option 1"
             android:textAllCaps="false"
+            android:gravity="center_horizontal|center_vertical"
             android:textColor="#6F6F6F "
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

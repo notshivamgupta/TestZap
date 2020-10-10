@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/user_name"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/poppins_bold"
@@ -183,16 +183,13 @@
             android:id="@+id/relativeLayout"
             android:layout_width="185dp"
             android:layout_height="120dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="80dp"
-
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/task_bg"
             android:elevation="10dp"
-            app:layout_constraintEnd_toStartOf="@+id/relativeLayout2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4">
 
             <ImageView
                 android:id="@+id/icon_check"
@@ -208,7 +205,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Test
                 Completed"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/test_completed"
@@ -228,13 +225,14 @@
             android:id="@+id/relativeLayout2"
             android:layout_width="185dp"
             android:layout_height="120dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:background="@drawable/task_bg"
             android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4">
 
             <ImageView
                 android:id="@+id/icon_duration"
@@ -250,7 +248,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Time
                 Duration"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/time_taken"
@@ -269,8 +267,8 @@
         </RelativeLayout>
 
         <ImageView
-            android:layout_width="450dp"
-            android:layout_height="129dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/multi_dots"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

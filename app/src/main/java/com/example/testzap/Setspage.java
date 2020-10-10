@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -24,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,8 +39,8 @@ public class Setspage extends AppCompatActivity {
     private ImageButton im1;
     RecyclerView recsetsview;
     SetsAdapter myadapter;
+LottieAnimationView anim;
 
-    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,17 +49,16 @@ public class Setspage extends AppCompatActivity {
         setstxt=findViewById(R.id.setstxt);
         setslyt=findViewById(R.id.setslnr);
         im1=findViewById(R.id.im1);
-
-
+        anim=findViewById(R.id.animationload);
         recsetsview= (RecyclerView) findViewById(R.id.setsRecycler);
 
         recsetsview.setLayoutManager(new GridLayoutManager(Setspage.this,1));
 
 
         Intent intent=getIntent();
-        int c=intent.getIntExtra("Subject Colour",0);
-        int img=intent.getIntExtra("Subject Image",0);
-        String name=intent.getStringExtra("Subject Name");
+        final int c=intent.getIntExtra("Subject Colour",0);
+        final int img=intent.getIntExtra("Subject Image",0);
+        final String name=intent.getStringExtra("Subject Name");
         setstxt.setText(name);
         setsimg.setImageResource(img);
         setslyt.setBackgroundResource(R.drawable.linearsets);
@@ -66,7 +67,7 @@ public class Setspage extends AppCompatActivity {
         drawable.setColor(c);
           im1.setBackgroundColor(c);
       Query query= FirebaseDatabase.getInstance().getReference().child("subject_name").child(name).child("sets");
-        FirebaseRecyclerOptions<Setsmodel> options =
+        final FirebaseRecyclerOptions<Setsmodel> options =
                 new FirebaseRecyclerOptions.Builder<Setsmodel>()
                         .setQuery(query, new SnapshotParser<Setsmodel>() {
                             @NonNull
@@ -76,7 +77,6 @@ public class Setspage extends AppCompatActivity {
                             }
                         })
                         .build();
-
         myadapter=new SetsAdapter(options,c,name,img);
         recsetsview.setAdapter(myadapter);
         im1.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +85,15 @@ public class Setspage extends AppCompatActivity {
                 startActivity(new Intent(Setspage.this,HomeActivity.class));
             }
         });
+        new Handler().postDelayed(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        anim.setVisibility(View.GONE);
+                        recsetsview.setVisibility(View.VISIBLE);
+                    }
+                },2000);
+
     }
 
    @Override
