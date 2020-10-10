@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-               String user=value.getString("Full_Name");
+                String user=value.getString("Full_Name");
                 String s;
                 Date today = new Date();
 
@@ -96,31 +96,31 @@ public class HomeFragment extends Fragment {
 
         fAuth=FirebaseAuth.getInstance();
         Logout.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               AlertDialog.Builder alertBuilder=new AlertDialog.Builder(getActivity());
-               alertBuilder.create();
-               alertBuilder.setMessage("Are You Sure You Want To Exit?");
-               alertBuilder.setCancelable(false);
-               alertBuilder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int i) {
-                       new CentralStorage(getActivity()).clearData();
-                       FirebaseAuth.getInstance().signOut();
-                       startActivity(new Intent(getActivity(),Register.class));
-                       getActivity().finish();
-                   }
-               });
-               alertBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int i) {
-                       Toast.makeText(getActivity(), "The Operation Cancelled", Toast.LENGTH_SHORT).show();
-                       dialogInterface.dismiss();
-                   }
-               });
-               alertBuilder.show();
-           }
-       });
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertBuilder=new AlertDialog.Builder(getActivity());
+                alertBuilder.create();
+                alertBuilder.setMessage("Are You Sure You Want To Exit?");
+                alertBuilder.setCancelable(false);
+                alertBuilder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        new CentralStorage(getActivity()).clearData();
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getActivity(),Register.class));
+                        getActivity().finish();
+                    }
+                });
+                alertBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "The Operation Cancelled", Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertBuilder.show();
+            }
+        });
         manager=new GridLayoutManager(view.getContext(),2);
         rView.setLayoutManager(manager);
         dataSource=new DataSource();

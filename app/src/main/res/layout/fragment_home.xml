@@ -12,8 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/logoutbutton"
@@ -42,16 +44,15 @@
             android:fontFamily="@font/poppins_bold"
             android:paddingLeft="25dp"
             android:text="Select a Subject :"
-            android:textSize="30dp"
-            />
+            android:textSize="30dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/res1"
             android:layout_width="match_parent"
-            android:layout_height="530dp"
+            android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
-
+            android:paddingRight="10dp"
+            android:paddingBottom="75dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

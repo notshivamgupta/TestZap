@@ -35,14 +35,14 @@ public class Register extends AppCompatActivity {
     public static final String TAG = "Tag";
     private FirebaseAuth mAuth;
     FirebaseFirestore db;
-private ImageView ri1,ri2;
-private TextInputEditText Rt1,Rt2,Rt3,Rt4;
-private TextView Rtt1,Rtt2;
-CentralStorage storage;
-private Button Rb1;
-private TextView Rb2;
-String userId;
-Intent intent,a;
+    private ImageView ri1,ri2;
+    private TextInputEditText Rt1,Rt2,Rt3,Rt4;
+    private TextView Rtt1,Rtt2;
+    CentralStorage storage;
+    private Button Rb1;
+    private TextView Rb2;
+    String userId;
+    Intent intent,a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,85 +65,85 @@ Intent intent,a;
             startActivity(new Intent(getApplicationContext(), Register.class));
             finish();
         }
-       Rb1.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-             final String Email=Rt2.getText().toString().trim();
-             final String Pass=Rt3.getText().toString().trim();
-             final String Name=Rt1.getText().toString();
-             final String status="Available";
-               final int test_completed=0;
-               final int time_taken=0;
-             if(TextUtils.isEmpty(Email)) {
+        Rb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String Email=Rt2.getText().toString().trim();
+                final String Pass=Rt3.getText().toString().trim();
+                final String Name=Rt1.getText().toString();
+                final String status="Available";
+                final int test_completed=0;
+                final int time_taken=0;
+                if(TextUtils.isEmpty(Email)) {
 
-                 Rt2.setError("Email is Required");
-                 return;
-             }
-             if(TextUtils.isEmpty(Pass))
-             {
-                 Rt3.setError("Password is Required");
-                 return;
-             }
-             if (Pass.length()<7)
-             {
-                 Rt3.setError("Password must contain atleast 8 characters");
-                 return;
-             }
-             mAuth.createUserWithEmailAndPassword(Email,Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                 @Override
-                 public void onComplete(@NonNull Task<AuthResult> task) {
-                     if (task.isSuccessful())
-                     {
-                         FirebaseUser users=mAuth.getCurrentUser();
-                         users.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                             @Override
-                             public void onSuccess(Void aVoid) {
-                                 Toast.makeText(Register.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show();
+                    Rt2.setError("Email is Required");
+                    return;
+                }
+                if(TextUtils.isEmpty(Pass))
+                {
+                    Rt3.setError("Password is Required");
+                    return;
+                }
+                if (Pass.length()<7)
+                {
+                    Rt3.setError("Password must contain atleast 8 characters");
+                    return;
+                }
+                mAuth.createUserWithEmailAndPassword(Email,Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful())
+                        {
+                            FirebaseUser users=mAuth.getCurrentUser();
+                            users.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(Register.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show();
 
-                             }
-                         }).addOnFailureListener(new OnFailureListener() {
-                             @Override
-                             public void onFailure(@NonNull Exception e) {
-                                 Log.d("Tag","onFailure:  Email not sent"+e.getMessage());
-                             }
-                         });
-                          userId= mAuth.getCurrentUser().getUid();
-                         DocumentReference documentReference=db.collection("Users").document(userId);
-                         Map<String,Object>user=new HashMap<>();
-                         user.put("Full_Name",Name);
-                         user.put("Email_Id",Email);
-                         user.put("status",status);
-                         user.put("test_completed",test_completed);
-                         user.put("time_taken",time_taken);
-                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                             @Override
-                             public void onSuccess(Void aVoid) {
-                                 Log.d(TAG,"On Success: User Profile Created for"+userId);
-                             }
-                         });
-                       storage.setData("USER",Email);
-                       storage.setData("PASS",Pass);
-                          intent=new Intent(Register.this,Sign_in.class);
-                         startActivity(intent);
-                          finish();
-                     }
-                     else
-                     {
-                         Toast.makeText(Register.this, "Error!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                     }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("Tag","onFailure:  Email not sent"+e.getMessage());
+                                }
+                            });
+                            userId= mAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference=db.collection("Users").document(userId);
+                            Map<String,Object>user=new HashMap<>();
+                            user.put("Full_Name",Name);
+                            user.put("Email_Id",Email);
+                            user.put("status",status);
+                            user.put("test_completed",test_completed);
+                            user.put("time_taken",time_taken);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG,"On Success: User Profile Created for"+userId);
+                                }
+                            });
+                            storage.setData("USER",Email);
+                            storage.setData("PASS",Pass);
+                            intent=new Intent(Register.this,Sign_in.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else
+                        {
+                            Toast.makeText(Register.this, "Error!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
 
-                 }
-             });
-           }
-       });
-      Rb2.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               a=new Intent(Register.this,Sign_in.class);
-               startActivity(a);
-               finish();
-           }
-       });
+                    }
+                });
+            }
+        });
+        Rb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=new Intent(Register.this,Sign_in.class);
+                startActivity(a);
+                finish();
+            }
+        });
     }
 }
 

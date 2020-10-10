@@ -36,9 +36,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final int a = Color.parseColor(list.get(position).getColour());
-  holder.tView.setText(list.get(position).getTitle());
-  holder.iView.setImageResource(list.get(position).getImg());
-  holder.layout.setBackgroundColor(a);
+        holder.tView.setText(list.get(position).getTitle());
+        holder.iView.setImageResource(list.get(position).getImg());
+        holder.layout.setBackgroundColor(a);
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,13 +61,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout layout;
         private ImageView iView;
-       private TextView tView;
+        private TextView tView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             layout=itemView.findViewById(R.id.reslr);
             iView=itemView.findViewById(R.id.recycle);
-           tView=itemView.findViewById(R.id.recycletytle);
+            tView=itemView.findViewById(R.id.recycletytle);
         }
     }
 }
