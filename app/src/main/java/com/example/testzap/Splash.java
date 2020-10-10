@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import java.util.concurrent.RunnableFuture;
 
 public class Splash extends AppCompatActivity {
-    Animation a1,a2;
+    Animation a1,a2,a3;
     ImageView s,b,i;
     CentralStorage storage;
     String value;
@@ -23,13 +23,14 @@ public class Splash extends AppCompatActivity {
         storage= new CentralStorage(Splash.this);
         a1= AnimationUtils.loadAnimation(this,R.anim.small);
         a2= AnimationUtils.loadAnimation(this,R.anim.big);
-
+a3=AnimationUtils.loadAnimation(this,R.anim.animword);
         s=findViewById(R.id.s);
         b=findViewById(R.id.b);
         i=findViewById(R.id.splashimgtest);
 
         s.setAnimation(a1);
         b.setAnimation(a2);
+        i.setAnimation(a3);
         value=storage.getData("USER");
 
        new Handler().postDelayed(

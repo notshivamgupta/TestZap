@@ -50,7 +50,7 @@
             android:id="@+id/logoutbutton"
             android:layout_width="42dp"
             android:layout_height="37dp"
-            android:background="@drawable/ic_baseline_power_settings_new_24"
+            android:background="@drawable/logforprofilefigma"
             app:layout_constraintBottom_toTopOf="@+id/user_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.573"
@@ -162,7 +162,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="287dp"
         android:layout_below="@id/constraintLayout">
 
         <TextView
@@ -173,8 +173,8 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_bold"
             android:text="My Productivity"
-            android:textSize="26dp"
             android:textColor="#000000"
+            android:textSize="26dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

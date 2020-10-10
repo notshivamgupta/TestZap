@@ -40,7 +40,6 @@ ArrayList pieEntries;
             time = i/60+"m "+i%60+"s";
         }
         holder.time.setText(time);
-        holder.correct.setText(Integer.toString(model.correct));
         pieEntries=new ArrayList<>();
         pieEntries.add(new PieEntry(model.correct,""));
         pieEntries.add(new PieEntry(model.incorrect,""));
@@ -48,7 +47,11 @@ ArrayList pieEntries;
         pieData=new PieData(pieDataSet);
         pieData.setDrawValues(false);
         holder.pieChart.setData(pieData);
+        holder.pieChart.setCenterText(model.correct+"/10"+" score");
+        holder.pieChart.setCenterTextSize(22);
+        holder.pieChart.setCenterTextColor(Color.parseColor("#3F2548"));
         pieDataSet.setColors(new int[]{Color.parseColor("#07E092"),Color.parseColor("#E76F51")});
+
 
     }
     @NonNull
@@ -60,7 +63,7 @@ ArrayList pieEntries;
     }
 
     class HistoryHolder extends RecyclerView.ViewHolder {
-        TextView sub,set,time,correct;
+        TextView sub,set,time;
         PieChart pieChart;
 
         public HistoryHolder(View itemView) {
@@ -68,12 +71,12 @@ ArrayList pieEntries;
             sub= itemView.findViewById(R.id.subjectfromfirestore);
             set= itemView.findViewById(R.id.setfromfirestore);
             time= itemView.findViewById(R.id.timetakenhistory);
-            correct= itemView.findViewById(R.id.correctpart);
             pieChart=itemView.findViewById(R.id.piechart);
             pieChart.getDescription().setEnabled(false);
             pieChart.getLegend().setEnabled(false);
             pieChart.setDrawSliceText(false);
             pieChart.setHoleRadius(75f);
+
         }
     }
 }

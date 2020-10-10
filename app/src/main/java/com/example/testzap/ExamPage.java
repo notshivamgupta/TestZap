@@ -173,6 +173,10 @@ public class ExamPage extends AppCompatActivity {
         final String[] b = new String[1];
         final String[] c = new String[1];
         final String[] d = new String[1];
+        a[0] = "a";
+        b[0] = "a";
+        c[0] = "a";
+        d[0] = "a";
         ops1.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -283,7 +287,7 @@ public class ExamPage extends AppCompatActivity {
                                 ops4.setBackground(getDrawable(R.drawable.right_d));
                             }
                         }
-                    } else {
+                    } else if (d[0].equals("correct")) {
 
                         if (ops4.getText().toString().equals(correct_ans)) {
                             ops4.setBackground(getDrawable(R.drawable.right_d));
@@ -299,6 +303,17 @@ public class ExamPage extends AppCompatActivity {
                                 ops2.setBackground(getDrawable(R.drawable.right_b));
                             }
                         }
+                    }
+                    else {
+                        if (ops1.getText().toString().equals(correct_ans)) {
+                            ops1.setBackground(getDrawable(R.drawable.right_a));
+                        } else if (ops3.getText().toString().equals(correct_ans)) {
+                            ops3.setBackground(getDrawable(R.drawable.right_c));
+                        } else if (ops2.getText().toString().equals(correct_ans)){
+                            ops2.setBackground(getDrawable(R.drawable.right_b));
+                        }
+                        else  ops4.setBackground(getDrawable(R.drawable.right_b));
+
                     }
 
                     Handler handler = new Handler();
