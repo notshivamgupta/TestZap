@@ -1,70 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_weight="1"
-    android:layout_marginHorizontal="5dp"
-    android:layout_marginVertical="10dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="10dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:padding="15dp">
-
+        android:layout_height="67dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/circle"
+                android:padding="7dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/target"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imagesetsrecycle"
-                android:layout_width="28dp"
-                android:layout_height="30dp"
-                android:src="@drawable/vectorhash"
+            <TextView
+                android:id="@+id/Settxt"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Sets"
+                android:textColor="#7B7878"
+                android:textSize="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="200:100"
+                app:layout_constraintStart_toEndOf="@id/imageback"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/BUTTONSETs"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonsets"
+                android:layout_margin="10dp"
+                android:text="START"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="30:20"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/Settxt"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
-
-        <TextView
-            android:id="@+id/Settxt"
-            android:layout_width="244dp"
-            android:layout_height="64dp"
-            android:layout_marginLeft="70dp"
-            android:text="Sets"
-            android:textColor="#7B7B7B"
-            android:textSize="30dp"
-            android:fontFamily="@font/poppins_semibold" />
-        <Button
-            android:id="@+id/BUTTONSETs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:text="Start"
-            android:fontFamily="@font/poppins_semibold"
-            android:textAllCaps="false"
-            android:textColor="#ffff"
-            android:textSize="20dp"
-            android:background="@drawable/buttonsets"
-            />
-
-    </RelativeLayout>
-
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

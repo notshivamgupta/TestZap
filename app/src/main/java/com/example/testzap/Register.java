@@ -61,7 +61,6 @@ public class Register extends AppCompatActivity {
         Rb2=findViewById(R.id.rb2);
         storage= new CentralStorage(Register.this);
         if (mAuth.getCurrentUser()!=null) {
-
             startActivity(new Intent(getApplicationContext(), Register.class));
             finish();
         }
@@ -94,7 +93,7 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful())
                         {
-                            FirebaseUser users=mAuth.getCurrentUser();
+                            FirebaseUser users = mAuth.getCurrentUser();
                             users.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

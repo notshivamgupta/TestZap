@@ -40,15 +40,15 @@
                 android:textColor="#3F2548"
                 android:textSize="20dp"
                 />
+
             <TextView
                 android:id="@+id/subjectfromfirestore"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="General Knowledge"
+                android:layout_height="70dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:textSize="20dp"
+                android:text="General Knowledge"
                 android:textColor="#3F2548"
-             />
+                android:textSize="17dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:text="Medium"
                 android:fontFamily="@font/poppins_semibold"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textColor="#3F2548"
                 />
         </LinearLayout>

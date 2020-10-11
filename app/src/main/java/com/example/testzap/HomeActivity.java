@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         BubbleNavigationLinearView bubbleNavigation = findViewById(R.id.bubbleNavigation);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new HomeFragment()).commit();
 

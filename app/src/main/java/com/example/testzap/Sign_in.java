@@ -36,13 +36,10 @@ private ImageView si1,si2;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        si1=findViewById(R.id.si1);
         mAuth = FirebaseAuth.getInstance();
-        si2=findViewById(R.id.si2);
-       storage= new CentralStorage(Sign_in.this);
+        storage= new CentralStorage(Sign_in.this);
         st1=findViewById(R.id.sti1);
         st2=findViewById(R.id.sti2);
-        t=findViewById(R.id.st1);
         b=findViewById(R.id.sb1);
         forgotpassword=findViewById(R.id.forgotpassword);
         b.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +96,7 @@ private ImageView si1,si2;
                 passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
                 passwordResetDialog.setView(resetMail);
 
-                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                passwordResetDialog.setCancelable(true).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String mail = resetMail.getText().toString();

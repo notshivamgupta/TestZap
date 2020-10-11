@@ -1,6 +1,6 @@
 package com.example.testzap;
 
-public class Questionmodel {
+public class  Questionmodel {
 
     String question ,correct_answer,option_3,option_2,option_1;
     public Questionmodel() {

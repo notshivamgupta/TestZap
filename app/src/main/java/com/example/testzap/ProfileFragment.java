@@ -208,7 +208,7 @@ public class ProfileFragment extends Fragment {
                           }
                       });
                   }
-              }).addOnFailureListener(new OnFailureListener() {
+              }).addOnFailureListener(new OnFailureListener()  {
                   @Override
                   public void onFailure(@NonNull Exception e) {
                       Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();

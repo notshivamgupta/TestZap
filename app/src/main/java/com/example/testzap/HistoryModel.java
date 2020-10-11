@@ -3,7 +3,7 @@ package com.example.testzap;
 public class HistoryModel {
 
     String sub_name, sub_set;
-    int correct, incorrect, time_taken;
+    int correct, incorrect,  time_taken;
 
     public HistoryModel() {
     }

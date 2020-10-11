@@ -192,7 +192,7 @@
         android:id="@+id/buttonresult"
         android:layout_width="325dp"
         android:layout_height="62dp"
-        android:background="#E76F51"
+        android:background="@drawable/register_button"
         android:text="Home"
         android:textColor="#ffff"
         android:textSize="30dp"
@@ -202,6 +202,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.93" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

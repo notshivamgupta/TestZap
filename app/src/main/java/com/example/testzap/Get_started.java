@@ -23,7 +23,7 @@ public class Get_started extends AppCompatActivity {
         t1=findViewById(R.id.txt1);
         t2=findViewById(R.id.tex2);
         b=findViewById(R.id.b);
-        b.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent =new Intent(Get_started.this,Register.class);

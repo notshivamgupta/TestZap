@@ -54,11 +54,10 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="10dp"
-                android:text="Subject   : "
+                android:text="Subject  : "
                 android:textColor="#ffffff"
                 android:textSize="18dp"
                 app:layout_constraintBottom_toTopOf="@+id/sub_set"
-
                 app:layout_constraintEnd_toStartOf="@+id/sub_txttxt"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,13 +72,13 @@
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="10dp"
-                android:text="Set           :"
+                android:text="Set          :"
                 android:textColor="#ffffff"
                 android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.167"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/sub_txt"
                 app:layout_constraintTop_toBottomOf="@+id/sub_txttxt"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -94,14 +93,14 @@
                 android:textColor="#ffffff"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.16"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/sub_set"
                 app:layout_constraintTop_toBottomOf="@+id/sub_set" />
 
             <TextView
                 android:id="@+id/sub_txttxt"
-                android:layout_width="219dp"
-                android:layout_height="49dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="24dp"
@@ -121,8 +120,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sub_txttxt"
                 android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="10dp"
                 android:text="Easy"
@@ -130,7 +127,7 @@
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/sub_set"
+                app:layout_constraintStart_toStartOf="@+id/sub_txttxt"
                 app:layout_constraintTop_toBottomOf="@+id/sub_txttxt" />
 
             <TextView

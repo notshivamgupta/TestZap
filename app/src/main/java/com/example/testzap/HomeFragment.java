@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
         fAuth= FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
 
-        userId = fAuth.getCurrentUser() .getUid();
+        userId = fAuth.getCurrentUser().getUid();
 
         DocumentReference documentReference= fStore.collection("Users").document(userId);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -100,7 +100,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder alertBuilder=new AlertDialog.Builder(getActivity());
                 alertBuilder.create();
-                alertBuilder.setMessage("Are You Sure You Want To Exit?");
+                alertBuilder.setMessage("Are You Sure You Want To Log Out?");
                 alertBuilder.setCancelable(false);
                 alertBuilder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
                     @Override
@@ -121,10 +121,10 @@ public class HomeFragment extends Fragment {
                 alertBuilder.show();
             }
         });
-        manager=new GridLayoutManager(view.getContext(),2);
-        rView.setLayoutManager(manager);
+
         dataSource=new DataSource();
         modelList=dataSource.list;
+        rView.setLayoutManager(new GridLayoutManager(view.getContext(),2));
         adapter=new CustomAdapter(modelList,view.getContext());
         rView.setAdapter(adapter);
         return view;

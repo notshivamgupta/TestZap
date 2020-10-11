@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, HistoryAdapter.HistoryHolder> {
 
-ArrayList pieEntries;
+    ArrayList pieEntries;
     PieDataSet pieDataSet;
     PieData pieData;
     public HistoryAdapter(@NonNull FirestoreRecyclerOptions<HistoryModel> options) {
@@ -76,7 +76,6 @@ ArrayList pieEntries;
             pieChart.getLegend().setEnabled(false);
             pieChart.setDrawSliceText(false);
             pieChart.setHoleRadius(75f);
-
         }
     }
 }
