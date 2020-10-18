@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         new CentralStorage(getActivity()).clearData();
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getActivity(),Register.class));
+                        startActivity(new Intent(getContext(),Register.class));
                         getActivity().finish();
                     }
                 });

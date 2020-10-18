@@ -68,32 +68,31 @@ public class HomeFragment extends Fragment {
 
         DocumentReference documentReference= fStore.collection("Users").document(userId);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                String user=value.getString("Full_Name");
-                String s;
-                Date today = new Date();
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    String user=value.getString("Full_Name");
+                    String s;
+                    Date today = new Date();
 
-                SimpleDateFormat format = new SimpleDateFormat("HH");
+                    SimpleDateFormat format = new SimpleDateFormat("HH");
 
-                String time = format.format(today);
+                    String time = format.format(today);
 
-                int date= Integer.parseInt(time);
-                if(date>=4&&date<12)
-                    s="Good Morning, "+user;
-                else if(date>=12&&date<17)
-                    s="Good Afternoon, "+user;
-                else if(date>=17&&date<23)
-                    s="Good Evening, "+user;
-                else
-                    s="Good Morning, "+user;
-                t1.setText(s);
-            }
+                    int date= Integer.parseInt(time);
+                    if(date>=4&&date<12)
+                        s="Good Morning, "+user;
+                    else if(date>=12&&date<17)
+                        s="Good Afternoon, "+user;
+                    else if(date>=17&&date<23)
+                        s="Good Evening, "+user;
+                    else
+                        s="Good Morning, "+user;
+                    t1.setText(s);
+                }
         });
         rView = view.findViewById(R.id.res1);
         tv=view.findViewById(R.id.texthome);
         Logout=view.findViewById(R.id.logoutbutton);
-
         fAuth=FirebaseAuth.getInstance();
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +106,7 @@ public class HomeFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         new CentralStorage(getActivity()).clearData();
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getActivity(),Register.class));
+                        startActivity(new Intent(getContext(),Register.class));
                         getActivity().finish();
                     }
                 });

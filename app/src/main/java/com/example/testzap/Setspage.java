@@ -83,6 +83,7 @@ LottieAnimationView anim;
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Setspage.this,HomeActivity.class));
+                finish();
             }
         });
         new Handler().postDelayed(

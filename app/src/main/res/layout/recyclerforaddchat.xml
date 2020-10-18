@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="10dp"
+    android:layout_margin="10dp">
+    <RelativeLayout
+        android:id="@+id/recyclerforChats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageaddchat"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+        <TextView
+            android:id="@+id/usernameforadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/imageaddchat"
+            android:layout_toRightOf="@+id/imageaddchat"
+            android:text="User Name"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+
+
+        <TextView
+            android:id="@+id/userStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="50dp"
+            android:layout_toEndOf="@+id/imageaddchat"
+            android:layout_toRightOf="@+id/imageaddchat"
+            android:text="Status!"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

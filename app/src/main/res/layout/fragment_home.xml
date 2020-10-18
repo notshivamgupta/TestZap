@@ -21,7 +21,7 @@
             android:id="@+id/logoutbutton"
             android:layout_width="42dp"
             android:layout_height="37dp"
-            android:layout_marginLeft="320dp"
+            android:layout_marginLeft="330dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/logoutfigmaforhome"
             tools:ignore="MissingConstraints" />
@@ -40,7 +40,7 @@
             android:id="@+id/texthome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="18dp"
             android:fontFamily="@font/poppins_bold"
             android:paddingLeft="25dp"
             android:text="Select a Subject :"

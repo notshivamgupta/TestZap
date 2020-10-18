@@ -3,8 +3,8 @@
     package="com.example.testzap">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
-    <uses-permission android:name="android.permission.VIBRATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,15 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".result"></activity>
+        <activity android:name=".AddChat" />
+        <activity android:name=".result" />
         <activity android:name=".start_test" />
         <activity android:name=".Setspage" />
         <activity android:name=".ExamPage" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,9 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Get_started">
-
-        </activity>
+        <activity android:name=".Get_started" />
         <activity android:name=".Register" />
         <activity android:name=".Sign_in" />
 

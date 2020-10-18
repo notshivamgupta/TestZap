@@ -48,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
                     case 2:
                         selectedFragment = new ProfileFragment();
                         break;
+                    case 3:
+                        selectedFragment= new Chat();
+                        break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         selectedFragment).commit();

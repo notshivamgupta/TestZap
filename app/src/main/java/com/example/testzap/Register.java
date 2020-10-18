@@ -120,11 +120,10 @@ public class Register extends AppCompatActivity {
                                     Log.d(TAG,"On Success: User Profile Created for"+userId);
                                 }
                             });
-                            storage.setData("USER",Email);
-                            storage.setData("PASS",Pass);
                             intent=new Intent(Register.this,Sign_in.class);
                             startActivity(intent);
                             finish();
+                            storage.setData("USER", "a");
                         }
                         else
                         {

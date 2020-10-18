@@ -68,7 +68,7 @@ private ImageView si1,si2;
                         if (task.isSuccessful())
                         {
                             FirebaseUser users=mAuth.getCurrentUser();
-                            if (users.isEmailVerified()) {
+                            if (users.isEmailVerified()){
                                 storage.setData("USER", Email);
                                 storage.setData("PASS", Pass);
                                 Toast.makeText(Sign_in.this, "Login Sucessful!", Toast.LENGTH_SHORT).show();
@@ -77,11 +77,13 @@ private ImageView si1,si2;
                                 finish();
                             }
                             else {
+
                                 Toast.makeText(Sign_in.this, "Email not Verified", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else
-                        Toast.makeText(Sign_in.this, "Login Failed!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        else {
+                            Toast.makeText(Sign_in.this, "Login Failed!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
