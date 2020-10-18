@@ -34,7 +34,6 @@ public class AddChat extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                String a=s;
                 FirebaseAuth mAuth;
                 mAuth = FirebaseAuth.getInstance();
                 Query query = db.collection("Users").orderBy("Full_Name").startAt(s).endAt(s+"\uf8ff");

@@ -1,5 +1,6 @@
 package com.example.testzap;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +24,19 @@ public class AddChatAdapter extends FirestoreRecyclerAdapter<AddChatModel,AddCha
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AddChatHolder holder, int position, @NonNull AddChatModel model) {
+    protected void onBindViewHolder(@NonNull final AddChatHolder holder, int position, @NonNull final AddChatModel model) {
 
             holder.name.setText(model.Full_Name);
             holder.status.setText(model.status);
             holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                  Intent intent=new Intent(view.getContext(),OpenProfileforChatUser.class);
+                   intent.putExtra("Name",model.Full_Name);
+                    intent.putExtra("Status",model.status);
+                   intent.putExtra("Time",model.time_taken);
+                   intent.putExtra("test",model.test_completed);
+                   view.getContext().startActivity(intent);
                 }
             });
 

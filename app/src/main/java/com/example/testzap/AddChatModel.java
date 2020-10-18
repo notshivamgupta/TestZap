@@ -2,14 +2,17 @@ package com.example.testzap;
 
 public class AddChatModel {
     String Email_Id,Full_Name,status;
+    Long test_completed,time_taken;
 
     public AddChatModel() {
     }
 
-    public AddChatModel(String email_Id, String full_Name, String status) {
+    public AddChatModel(String email_Id, String full_Name, String status, Long test_completed, Long time_taken) {
         Email_Id = email_Id;
         Full_Name = full_Name;
         this.status = status;
+        this.test_completed = test_completed;
+        this.time_taken = time_taken;
     }
 
     public String getEmail_Id() {
@@ -34,5 +37,21 @@ public class AddChatModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Long getTest_completed() {
+        return test_completed;
+    }
+
+    public void setTest_completed(Long test_completed) {
+        this.test_completed = test_completed;
+    }
+
+    public Long getTime_taken() {
+        return time_taken;
+    }
+
+    public void setTime_taken(Long time_taken) {
+        this.time_taken = time_taken;
     }
 }
