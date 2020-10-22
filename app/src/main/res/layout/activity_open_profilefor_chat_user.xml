@@ -126,6 +126,7 @@
         app:layout_constraintHorizontal_bias="0.5"/>
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="355dp"
         android:layout_height="146dp"
         android:layout_marginTop="10dp"
@@ -136,6 +137,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearlayout"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/SendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Message"
+         android:textAllCaps="false"
+        android:background="@drawable/register_button"
+        android:textColor="#ffff"
+        android:textSize="30dp"
+        android:padding="15dp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.683" />
 
     <GridLayout
         android:id="@+id/linearlayout"

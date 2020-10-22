@@ -36,6 +36,7 @@ public class AddChatAdapter extends FirestoreRecyclerAdapter<AddChatModel,AddCha
                     intent.putExtra("Status",model.status);
                    intent.putExtra("Time",model.time_taken);
                    intent.putExtra("test",model.test_completed);
+                   intent.putExtra("UserId",model.User_Id);
                    view.getContext().startActivity(intent);
                 }
             });

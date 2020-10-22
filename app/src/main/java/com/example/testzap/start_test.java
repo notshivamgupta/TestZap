@@ -51,6 +51,7 @@ public class start_test extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1=new Intent(start_test.this,Setspage.class);
                 startActivity(intent1);
+                finish();
             }
         });
         starttest.setOnClickListener(new View.OnClickListener() {

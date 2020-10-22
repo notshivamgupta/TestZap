@@ -1,16 +1,17 @@
 package com.example.testzap;
 
 public class AddChatModel {
-    String Email_Id,Full_Name,status;
+    String Email_Id,Full_Name,status,User_Id;
     Long test_completed,time_taken;
 
     public AddChatModel() {
     }
 
-    public AddChatModel(String email_Id, String full_Name, String status, Long test_completed, Long time_taken) {
+    public AddChatModel(String email_Id, String full_Name, String status, String user_Id, Long test_completed, Long time_taken) {
         Email_Id = email_Id;
         Full_Name = full_Name;
         this.status = status;
+        User_Id = user_Id;
         this.test_completed = test_completed;
         this.time_taken = time_taken;
     }
@@ -37,6 +38,14 @@ public class AddChatModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUser_Id() {
+        return User_Id;
+    }
+
+    public void setUser_Id(String user_Id) {
+        User_Id = user_Id;
     }
 
     public Long getTest_completed() {

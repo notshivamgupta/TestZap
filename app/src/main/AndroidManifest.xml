@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpenProfileforChatUser"></activity>
+        <activity android:name=".SendMessageActivity"></activity>
+        <activity android:name=".OpenProfileforChatUser" />
         <activity android:name=".AddChat" />
         <activity android:name=".result" />
         <activity android:name=".start_test" />

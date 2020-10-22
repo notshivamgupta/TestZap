@@ -157,8 +157,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String a=editText.getText().toString();
-
-                // firestore update
                 db = FirebaseFirestore.getInstance();
 
                 db.collection("Users")

@@ -112,6 +112,7 @@ public class Register extends AppCompatActivity {
                             user.put("Full_Name",Name);
                             user.put("Email_Id",Email);
                             user.put("status",status);
+                            user.put("User_Id",userId);
                             user.put("test_completed",test_completed);
                             user.put("time_taken",time_taken);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
