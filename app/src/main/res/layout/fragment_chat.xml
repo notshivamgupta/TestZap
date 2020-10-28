@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,67 +10,56 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-10dp"
-        android:src="@drawable/imageforchat"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="10:3"
+        android:background="@drawable/chat_bakground_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/Texthistory"
+
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/searchBar"
+        style="@style/MaterialSearchBarLight"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:gravity="center_horizontal"
-        android:text="CHAT"
-        android:textAlignment="center"
-        android:textColor="#ffff"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        android:layout_height="46dp"
+        android:minHeight="40dp"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="35dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
-
-
+        app:mt_hint="Type name of person or groups!"
+        app:mt_maxSuggestionsCount="10"
+        app:mt_placeholder="  Search"
+        app:mt_roundedSearchBarEnabled="true"
+        app:mt_speechMode="true" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/Tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabIndicatorColor="#FFFFFF"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="#E7E5E5"
+        app:layout_constraintVertical_bias="0"
+        app:tabTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Texthistory"
-        app:layout_constraintVertical_bias="0.0"
-        app:tabIndicatorColor="#000000"
-        app:tabIndicatorFullWidth="false"
-        app:tabSelectedTextColor="#f6f6f6"
-        app:tabTextColor="@color/design_default_color_error" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/View_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        />
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

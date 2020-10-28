@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 public class AddChatAdapter extends FirestoreRecyclerAdapter<AddChatModel,AddChatAdapter.AddChatHolder> {
+
     public AddChatAdapter(@NonNull FirestoreRecyclerOptions<AddChatModel> options) {
         super(options);
     }
@@ -40,7 +41,6 @@ public class AddChatAdapter extends FirestoreRecyclerAdapter<AddChatModel,AddCha
                    view.getContext().startActivity(intent);
                 }
             });
-
     }
 
     @NonNull

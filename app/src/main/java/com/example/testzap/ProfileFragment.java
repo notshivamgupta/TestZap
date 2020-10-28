@@ -61,9 +61,9 @@ public class ProfileFragment extends Fragment {
     public ProfileFragment() {
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view =inflater.inflate(R.layout.fragment_profile, container, false);
+
         imgprofile =view.findViewById(R.id.profile_image);
         ProfileButton = view.findViewById(R.id.addImage);
         name= view.findViewById(R.id.user_name);
@@ -101,17 +101,20 @@ public class ProfileFragment extends Fragment {
                 alertBuilder.show();
             }
         });
+
         fAuth=FirebaseAuth.getInstance();
         userId=fAuth.getCurrentUser().getUid();
 
-        storageReference= FirebaseStorage.getInstance().getReference();
-        StorageReference profoleRef=storageReference.child("UsersProfile").child(userId);
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        StorageReference profoleRef = storageReference.child("UsersProfile").child(userId);
             profoleRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     Picasso.get().load(uri).into(imgprofile);
                 }
             });
+
         ProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,7 +198,7 @@ public class ProfileFragment extends Fragment {
           {
               Uri ImageUri=data.getData();
               imgprofile.setImageURI(ImageUri);
-              final StorageReference fileref=storageReference.child("UsersProfile").child(userId);
+              final StorageReference fileref=storageReference.child("Users Profile").child(userId);
               fileref.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                   @Override
                   public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
