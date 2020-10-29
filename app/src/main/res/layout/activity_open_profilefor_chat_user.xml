@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OpenProfileforChatUser">
+
     <View
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:background="@drawable/profile_bg"
         android:elevation="-10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.55"
+        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,39 +52,36 @@
 
 
     <TextView
-        android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center"
-        android:text="Status:"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameforchatuser" />
-
+        android:fontFamily="@font/poppins_light"
+        android:text="Bio"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/status_textforchatuser"
+        app:layout_constraintEnd_toEndOf="@+id/status_textforchatuser"
+        app:layout_constraintStart_toStartOf="@+id/status_textforchatuser"
+        app:layout_constraintTop_toBottomOf="@+id/nameforchatuser" />" />
 
     <TextView
         android:id="@+id/status_textforchatuser"
-        android:layout_marginHorizontal="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_light"
-        android:gravity="center"
+        android:gravity="center|top"
+        android:layout_marginHorizontal="50dp"
+        android:paddingLeft="10dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.  "
-        android:textSize="16dp"
+        android:textSize="15dp"
+        android:layout_marginBottom="5dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/done">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"/>
 
-    </TextView>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -116,21 +114,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="My Productivity"
+        android:text="Scores"
         android:textColor="#000000"
-        android:textSize="26dp"
+        android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-        app:layout_constraintHorizontal_bias="0.5"/>
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="355dp"
-        android:layout_height="146dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/multi_dots"
+        app:layout_constraintDimensionRatio="10:3.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
@@ -142,26 +142,25 @@
         android:id="@+id/SendMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Message"
-         android:textAllCaps="false"
         android:background="@drawable/register_button"
-        android:textColor="#ffff"
-        android:textSize="30dp"
-        android:padding="15dp"
         android:fontFamily="@font/poppins_bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.683" />
+        android:paddingHorizontal="15dp"
+        android:text="Send Message"
+        android:textAllCaps="true"
+        android:textColor="#ffff"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95"/>
 
     <GridLayout
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="10dp"
-        app:layout_constraintDimensionRatio="100:41"
+        android:padding="10dp"
+        app:layout_constraintDimensionRatio="100:37"
         android:columnOrderPreserved="true"
         android:rowCount="1"
         android:columnCount="2"
@@ -199,10 +198,10 @@
                     android:src="@drawable/icon_check"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/textView4"
-                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintVertical_bias="0.9"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.05" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -210,11 +209,12 @@
                     android:layout_height="58dp"
                     android:layout_toRightOf="@+id/icon_check"
                     android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
                     android:text="Test Completed"
-                    android:textSize="18dp"
+                    android:textSize="13dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/relativeLayout"
-                    app:layout_constraintStart_toEndOf="@id/icon_check"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0" />
 
@@ -225,13 +225,14 @@
                     android:layout_margin="5dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="10"
-                    android:layout_marginBottom="5dp"
                     android:textColor="#2E2E2E"
-                    android:textSize="32dp"
+                    android:textSize="27dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toEndOf="@+id/icon_check"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -254,50 +255,52 @@
                 android:id="@+id/relativeLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="193dp"
-                tools:layout_editor_absoluteY="494dp"
                 android:elevation="10dp">
 
                 <ImageView
                     android:id="@+id/icon_duration"
-                    android:layout_width="22dp"
-                    android:layout_height="26dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:src="@drawable/icon_duration"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/textView5"
-                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintVertical_bias="0.9"
                     app:layout_constraintStart_toStartOf="@+id/relativeLayout2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.05" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="129dp"
+                    android:layout_height="58dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Time\nDuration"
-                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:text="Time Duration"
+                    android:textSize="13dp"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/relativeLayout2"
-                    app:layout_constraintStart_toEndOf="@id/icon_duration"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintVertical_bias="0" />
 
                 <TextView
                     android:id="@+id/time_takenforchatuser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="5"
-                    android:layout_marginBottom="5dp"
                     android:textColor="#2E2E2E"
-                    android:textSize="32dp"
+                    android:textSize="27dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toEndOf="@+id/icon_duration"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </GridLayout>

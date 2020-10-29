@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:mt_hint="Type name of person or groups!"
+        app:mt_hint="Search in your chats!"
         app:mt_maxSuggestionsCount="10"
         app:mt_placeholder="  Search"
         app:mt_roundedSearchBarEnabled="true"
