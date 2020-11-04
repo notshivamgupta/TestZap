@@ -45,20 +45,23 @@ GetMessageAdapter adapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message);
-        name=findViewById(R.id.chatname);
+        name=findViewById(R.id.title);
         message=findViewById(R.id.Typemessagehere);
         recyclerView=findViewById(R.id.Recyclerinchat);
         send=findViewById(R.id.presstosendmessage);
-        Intent intent=getIntent();
-        String Name=intent.getStringExtra("UserName");
+        Intent intent = getIntent();
+        String Name = intent.getStringExtra("UserName");
         final String UserIDres=intent.getStringExtra("User_Id");
         name.setText(Name);
         final String user=FirebaseAuth.getInstance().getCurrentUser().getUid();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            mAuth = FirebaseAuth.getInstance();
+        LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
+        manager.setReverseLayout(true);
+        recyclerView.setLayoutManager(manager);
+
+              mAuth = FirebaseAuth.getInstance();
             final String userId=mAuth.getCurrentUser().getUid();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Chats").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            db.collection("Chats").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
@@ -69,7 +72,7 @@ GetMessageAdapter adapter;
                 {
                     List<GetMessageModel> messages = new ArrayList<>();
 
-                  for (QueryDocumentSnapshot doc : value) {
+                    for (QueryDocumentSnapshot doc : value) {
                       if (doc.getString("Receiver").equals(UserIDres)|| doc.getString("Sender").equals(UserIDres))
                           messages.add(
                                   new GetMessageModel(
@@ -78,9 +81,7 @@ GetMessageAdapter adapter;
                                           doc.getString("Sender")
                                   )
                           );
-
-                }
-
+                    }
                 adapter = new GetMessageAdapter(messages,userId);
                     recyclerView.setAdapter(adapter);
             }

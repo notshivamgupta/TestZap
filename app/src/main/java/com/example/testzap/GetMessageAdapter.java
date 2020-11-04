@@ -29,7 +29,6 @@ public class GetMessageAdapter extends RecyclerView.Adapter<GetMessageAdapter.Ge
     private List<GetMessageModel> messages;
 
     public GetMessageAdapter(List<GetMessageModel> messages, String userId) {
-
         this.messages = messages;
         this.userId = userId;
     }
@@ -57,11 +56,10 @@ public class GetMessageAdapter extends RecyclerView.Adapter<GetMessageAdapter.Ge
             return RECEIVED;
         }
     }
+
     @Override
     public void onBindViewHolder(@NonNull GetMessageHolder holder, int position) {
-
       holder.bind(messages.get(position));
-
     }
 
     @Override
@@ -78,7 +76,5 @@ public class GetMessageAdapter extends RecyclerView.Adapter<GetMessageAdapter.Ge
         public void bind(GetMessageModel chat) {
             message.setText(chat.getMessage());
         }
-
     }
-
 }

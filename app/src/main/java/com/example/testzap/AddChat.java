@@ -46,8 +46,8 @@ public class AddChat extends AppCompatActivity {
                 return true;
             }
         });
-
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -56,6 +56,11 @@ public class AddChat extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
+        try{
         adapter.stopListening();
+        }
+        catch (Exception e){
+        }
     }
+
 }

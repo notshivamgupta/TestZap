@@ -37,6 +37,9 @@ public class Chat extends Fragment {
 
         materialSearchBar = view.findViewById(R.id.searchBar);
         materialSearchBar.setSpeechMode(true);
+
+//      materialSearchBar.addTextChangeListener();
+
         tabLayout=view.findViewById(R.id.Tab_layout);
         viewPager=view.findViewById(R.id.View_pager);
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getChildFragmentManager());

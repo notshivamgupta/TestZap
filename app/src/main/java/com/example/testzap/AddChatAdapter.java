@@ -34,7 +34,7 @@ public class AddChatAdapter extends FirestoreRecyclerAdapter<AddChatModel,AddCha
                 public void onClick(View view) {
                   Intent intent=new Intent(view.getContext(),OpenProfileforChatUser.class);
                    intent.putExtra("Name",model.Full_Name);
-                    intent.putExtra("Status",model.status);
+                   intent.putExtra("Status",model.status);
                    intent.putExtra("Time",model.time_taken);
                    intent.putExtra("test",model.test_completed);
                    intent.putExtra("UserId",model.User_Id);
